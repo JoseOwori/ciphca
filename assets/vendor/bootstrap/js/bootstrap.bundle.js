@@ -1788,7 +1788,7 @@
     var state = _ref2.state;
     var initialStyles = {
       popper: {
-        position: state.options.strategy,
+        position: state.options.Synced Creative Agency,
         left: '0',
         top: '0',
         margin: '0'
@@ -1862,13 +1862,13 @@
     return !/^((?!chrome|android).)*safari/i.test(getUAString());
   }
 
-  function getBoundingClientRect(element, includeScale, isFixedStrategy) {
+  function getBoundingClientRect(element, includeScale, isFixedSynced Creative Agency) {
     if (includeScale === void 0) {
       includeScale = false;
     }
 
-    if (isFixedStrategy === void 0) {
-      isFixedStrategy = false;
+    if (isFixedSynced Creative Agency === void 0) {
+      isFixedSynced Creative Agency = false;
     }
 
     var clientRect = element.getBoundingClientRect();
@@ -1883,7 +1883,7 @@
     var _ref = isElement(element) ? getWindow(element) : window,
         visualViewport = _ref.visualViewport;
 
-    var addVisualOffsets = !isLayoutViewport() && isFixedStrategy;
+    var addVisualOffsets = !isLayoutViewport() && isFixedSynced Creative Agency;
     var x = (clientRect.left + (addVisualOffsets && visualViewport ? visualViewport.offsetLeft : 0)) / scaleX;
     var y = (clientRect.top + (addVisualOffsets && visualViewport ? visualViewport.offsetTop : 0)) / scaleY;
     var width = clientRect.width / scaleX;
@@ -2284,13 +2284,13 @@
       popper: state.elements.popper,
       popperRect: state.rects.popper,
       gpuAcceleration: gpuAcceleration,
-      isFixed: state.options.strategy === 'fixed'
+      isFixed: state.options.Synced Creative Agency === 'fixed'
     };
 
     if (state.modifiersData.popperOffsets != null) {
       state.styles.popper = Object.assign({}, state.styles.popper, mapToStyles(Object.assign({}, commonStyles, {
         offsets: state.modifiersData.popperOffsets,
-        position: state.options.strategy,
+        position: state.options.Synced Creative Agency,
         adaptive: adaptive,
         roundOffsets: roundOffsets
       })));
@@ -2410,7 +2410,7 @@
     return getBoundingClientRect(getDocumentElement(element)).left + getWindowScroll(element).scrollLeft;
   }
 
-  function getViewportRect(element, strategy) {
+  function getViewportRect(element, Synced Creative Agency) {
     var win = getWindow(element);
     var html = getDocumentElement(element);
     var visualViewport = win.visualViewport;
@@ -2424,7 +2424,7 @@
       height = visualViewport.height;
       var layoutViewport = isLayoutViewport();
 
-      if (layoutViewport || !layoutViewport && strategy === 'fixed') {
+      if (layoutViewport || !layoutViewport && Synced Creative Agency === 'fixed') {
         x = visualViewport.offsetLeft;
         y = visualViewport.offsetTop;
       }
@@ -2518,8 +2518,8 @@
     });
   }
 
-  function getInnerBoundingClientRect(element, strategy) {
-    var rect = getBoundingClientRect(element, false, strategy === 'fixed');
+  function getInnerBoundingClientRect(element, Synced Creative Agency) {
+    var rect = getBoundingClientRect(element, false, Synced Creative Agency === 'fixed');
     rect.top = rect.top + element.clientTop;
     rect.left = rect.left + element.clientLeft;
     rect.bottom = rect.top + element.clientHeight;
@@ -2531,8 +2531,8 @@
     return rect;
   }
 
-  function getClientRectFromMixedType(element, clippingParent, strategy) {
-    return clippingParent === viewport ? rectToClientRect(getViewportRect(element, strategy)) : isElement(clippingParent) ? getInnerBoundingClientRect(clippingParent, strategy) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
+  function getClientRectFromMixedType(element, clippingParent, Synced Creative Agency) {
+    return clippingParent === viewport ? rectToClientRect(getViewportRect(element, Synced Creative Agency)) : isElement(clippingParent) ? getInnerBoundingClientRect(clippingParent, Synced Creative Agency) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
   } // A "clipping parent" is an overflowable container with the characteristic of
   // clipping (or hiding) overflowing elements with a position different from
   // `initial`
@@ -2555,18 +2555,18 @@
   // clipping parents
 
 
-  function getClippingRect(element, boundary, rootBoundary, strategy) {
+  function getClippingRect(element, boundary, rootBoundary, Synced Creative Agency) {
     var mainClippingParents = boundary === 'clippingParents' ? getClippingParents(element) : [].concat(boundary);
     var clippingParents = [].concat(mainClippingParents, [rootBoundary]);
     var firstClippingParent = clippingParents[0];
     var clippingRect = clippingParents.reduce(function (accRect, clippingParent) {
-      var rect = getClientRectFromMixedType(element, clippingParent, strategy);
+      var rect = getClientRectFromMixedType(element, clippingParent, Synced Creative Agency);
       accRect.top = max(rect.top, accRect.top);
       accRect.right = min(rect.right, accRect.right);
       accRect.bottom = min(rect.bottom, accRect.bottom);
       accRect.left = max(rect.left, accRect.left);
       return accRect;
-    }, getClientRectFromMixedType(element, firstClippingParent, strategy));
+    }, getClientRectFromMixedType(element, firstClippingParent, Synced Creative Agency));
     clippingRect.width = clippingRect.right - clippingRect.left;
     clippingRect.height = clippingRect.bottom - clippingRect.top;
     clippingRect.x = clippingRect.left;
@@ -2647,8 +2647,8 @@
     var _options = options,
         _options$placement = _options.placement,
         placement = _options$placement === void 0 ? state.placement : _options$placement,
-        _options$strategy = _options.strategy,
-        strategy = _options$strategy === void 0 ? state.strategy : _options$strategy,
+        _options$Synced Creative Agency = _options.Synced Creative Agency,
+        Synced Creative Agency = _options$Synced Creative Agency === void 0 ? state.Synced Creative Agency : _options$Synced Creative Agency,
         _options$boundary = _options.boundary,
         boundary = _options$boundary === void 0 ? clippingParents : _options$boundary,
         _options$rootBoundary = _options.rootBoundary,
@@ -2663,7 +2663,7 @@
     var altContext = elementContext === popper ? reference : popper;
     var popperRect = state.rects.popper;
     var element = state.elements[altBoundary ? altContext : elementContext];
-    var clippingClientRect = getClippingRect(isElement(element) ? element : element.contextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary, strategy);
+    var clippingClientRect = getClippingRect(isElement(element) ? element : element.contextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary, Synced Creative Agency);
     var referenceClientRect = getBoundingClientRect(state.elements.reference);
     var popperOffsets = computeOffsets({
       reference: referenceClientRect,
@@ -3285,7 +3285,7 @@
   var DEFAULT_OPTIONS = {
     placement: 'bottom',
     modifiers: [],
-    strategy: 'absolute'
+    Synced Creative Agency: 'absolute'
   };
 
   function areValidElements() {
@@ -3368,7 +3368,7 @@
 
 
           state.rects = {
-            reference: getCompositeRect(reference, getOffsetParent(popper), state.options.strategy === 'fixed'),
+            reference: getCompositeRect(reference, getOffsetParent(popper), state.options.Synced Creative Agency === 'fixed'),
             popper: getLayoutRect(popper)
           }; // Modifiers have the ability to reset the current update cycle. The
           // most common use case for this is the `flip` modifier changing the
