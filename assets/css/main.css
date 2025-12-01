@@ -31,6 +31,24 @@
   --contrast-color: #ffffff; /* For text on accent elements */
 }
 
+/* Dark theme variables applied when `data-theme="dark"` is set on the document root */
+[data-theme="dark"] {
+  --background-color: #081016; /* deep page background */
+  --default-color: #cfdff3; /* body text on dark */
+  --heading-color: #ffffff; /* headings */
+  --accent-color: #4da6ff; /* lighter accent for dark */
+  --surface-color: #0f1720; /* cards / surfaces */
+  --contrast-color: #ffffff; /* for text on accent */
+
+  /* nav overrides on dark */
+  --nav-color: #cfdff3;
+  --nav-hover-color: var(--accent-color);
+  --nav-mobile-background-color: #071018;
+  --nav-dropdown-background-color: #071018;
+  --nav-dropdown-color: #cfdff3;
+  --nav-dropdown-hover-color: var(--accent-color);
+}
+
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
   --nav-color: #2b3338;  /* Nav links (dark on light background) */
@@ -225,6 +243,38 @@ h6 {
 
   .header .navmenu {
     order: 3;
+  }
+}
+
+/* Theme toggle button styling */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  color: var(--nav-color);
+  font-size: 1.1rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.theme-toggle i {
+  font-size: 1.2rem;
+  line-height: 0;
+}
+
+.theme-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color), transparent 85%);
+}
+
+@media (max-width: 767px) {
+  .theme-toggle {
+    display: none; /* hide on very small screens to keep header compact */
   }
 }
 
