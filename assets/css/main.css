@@ -3573,23 +3573,24 @@ section,
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
   padding: 30px 20px 20px;
-  opacity: 0;
-  transform: translateY(20px);
+  /* Visible by default to improve accessibility and mobile UX */
+  opacity: 1;
+  transform: translateY(0);
   transition: all 0.3s ease;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }
 
 .service-details .service-gallery .service-details-slider .portfolio-item .portfolio-info h5 {
-  color: var(--contrast-color);
+  color: #ffffff; /* bright white for clear visibility */
   font-weight: 700;
   margin-bottom: 5px;
 }
 
 .service-details .service-gallery .service-details-slider .portfolio-item .portfolio-info p {
-  color: color-mix(in srgb, var(--contrast-color), transparent 20%);
+  color: rgba(255,255,255,0.95); /* near-white for readable descriptions */
   margin: 0;
   font-size: 14px;
 }
