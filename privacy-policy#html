@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Privacy Policy — Ciph Creative Agency</title>
+  <meta name="description" content="Privacy Policy for Ciph Creative Agency. Learn how we collect, use, and protect your personal information.">
+  <meta name="keywords" content="privacy policy, data protection, privacy, ciph creative agency">
+  <meta name="robots" content="index, follow">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+</head>
+
+<body class="legal-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">Ciph Creative Agency</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <!-- Theme toggle button -->
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" aria-pressed="false" title="Toggle theme">
+        <i class="bi bi-moon"></i>
+      </button>
+
+      <a class="btn-getstarted" href="index.html#contact">Get Started</a>
+
+    </div>
+  </header>
+
+  <main class="main mt-5 pt-5">
+    <div class="container">
+      <div class="page-title-section mb-5" data-aos="fade-up">
+        <h1 class="display-4 fw-bold mb-2">Privacy Policy</h1>
+        <p class="lead text-muted">Last updated: December 2, 2025</p>
+      </div>
+
+      <div class="row g-4 legal-content" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-12">
+          <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body">
+              <h2 class="h4 fw-semibold mb-3">1. Introduction</h2>
+              <p class="mb-0">Ciph Creative Agency ("we", "us", "our", or "Company") operates the website. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body">
+              <h2 class="h4 fw-semibold mb-3">2. Information Collection and Use</h2>
+              <p>We collect several different types of information for various purposes to provide and improve our Service to you.</p>
+              <h3 class="h5 mt-4 mb-3">Types of Data Collected:</h3>
+              <ul class="legal-list list-unstyled ms-2">
+                <li class="mb-3">
+                  <strong>Personal Data:</strong> While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data"). This may include, but is not limited to:
+                  <ul class="mt-2 ms-3">
+                    <li>Email address</li>
+                    <li>First name and last name</li>
+                    <li>Phone number</li>
+                    <li>Address, State, Province, ZIP/Postal code, City</li>
+                    <li>Cookies and Usage Data</li>
+                  </ul>
+                </li>
+                <li class="mb-2">
+                  <strong>Usage Data:</strong> We may also collect information how the Service is accessed and used ("Usage Data"). This may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages you visit, the time and date of your visit, the time spent on those pages, and other diagnostic data.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body">
+              <h2 class="h4 fw-semibold mb-3">3. Use of Data</h2>
+              <p>Ciph Creative Agency uses the collected data for various purposes:</p>
+              <ul class="legal-list list-unstyled ms-2">
+                <li class="mb-2">To provide and maintain our Service</li>
+                <li class="mb-2">To notify you about changes to our Service</li>
+                <li class="mb-2">To allow you to participate in interactive features of our Service when you choose to do so</li>
+                <li class="mb-2">To provide customer support</li>
+                <li class="mb-2">To gather analysis or valuable information so that we can improve our Service</li>
+                <li class="mb-2">To monitor the usage of our Service</li>
+                <li class="mb-2">To detect, prevent and address technical issues</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body">
+              <h2 class="h4 fw-semibold mb-3">4. Security of Data</h2>
+              <p class="mb-0">The security of your data is important to us, but remember that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body">
+              <h2 class="h4 fw-semibold mb-3">5. Changes to This Privacy Policy</h2>
+              <p class="mb-0">We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date at the top of this Privacy Policy. You are advised to review this Privacy Policy periodically for any changes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body">
+              <h2 class="h4 fw-semibold mb-3">6. Contact Us</h2>
+              <p>If you have any questions about this Privacy Policy, please contact us:</p>
+              <div class="ps-2">
+                <p class="mb-1"><strong>Ciph Creative Agency</strong></p>
+                <p class="mb-1">Email: <a href="mailto:ciphcreativeagency@gmail.com">ciphcreativeagency@gmail.com</a></p>
+                <p class="mb-1">Phone: <a href="tel:+256393242000">+256 (0) 393 24 2000</a></p>
+                <p class="mb-0">Address: A108 Adam Street, New York, NY 535022, United States</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body">
+              <h2 class="h4 fw-semibold mb-3">7. Your Rights</h2>
+              <p>Depending on your location, you may have certain rights regarding your Personal Data. You may have the right to:</p>
+              <ul class="legal-list list-unstyled ms-2">
+                <li class="mb-2">Request access to your Personal Data</li>
+                <li class="mb-2">Request correction of inaccurate Personal Data</li>
+                <li class="mb-2">Request erasure of your Personal Data</li>
+                <li class="mb-2">Restrict processing of your Personal Data</li>
+                <li class="mb-2">Request portability of your Personal Data</li>
+                <li class="mb-2">Object to processing of your Personal Data</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">Ciph Creative Agency</span>
+          </a>
+          <p>Transforming Ideas into Digital Excellence.</p>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About us</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="terms-of-service.html">Terms of service</a></li>
+            <li><a href="privacy-policy.html">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="web-design.html">Web Design</a></li>
+            <li><a href="web-development.html">Web Development</a></li>
+            <li><a href="product-management.html">Product Management</a></li>
+            <li><a href="marketing.html">Marketing</a></li>
+            <li><a href="graphic-design.html">Graphic Design</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>A108 Adam Street</p>
+          <p>New York, NY 535022</p>
+          <p>United States</p>
+          <p class="mt-4"><strong>Phone:</strong> <span>+ 256 (0) 393 24 2000</span></p>
+          <p><strong>Email:</strong> <span>ciphcreativeagency@gmail.com</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Ciph Creative Agency</strong> <span>All Rights Reserved</span></p>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
