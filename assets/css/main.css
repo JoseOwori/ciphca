@@ -225,8 +225,7 @@ h6 {
 }
 
 .agency-tagline {
-  color: #5e60ce;
-  /* Fallback for lch(63.82% 52.14 265.01) */
+  color: var(--accent-color);
   font-weight: 600;
   letter-spacing: 1px;
 }
