@@ -225,9 +225,15 @@ h6 {
 }
 
 .agency-tagline {
-  color: var(--accent-color);
+  color: #0f4c81 !important;
+  /* Force Deep Blue in light mode */
   font-weight: 600;
   letter-spacing: 1px;
+}
+
+[data-theme="dark"] .agency-tagline {
+  color: #ffffff !important;
+  /* Force White in dark mode */
 }
 
 .header .btn-getstarted,
