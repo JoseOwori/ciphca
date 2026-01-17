@@ -21,24 +21,36 @@
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
+:root {
   /* Neutral / Premium palette */
-  --background-color: #f5f7fb; /* Very light neutral background */
-  --default-color: #2b3338; /* Primary body text */
-  --heading-color: #0b1220; /* Headings */
-  --accent-color: #0f4c81; /* Primary accent (deep blue) */
-  --surface-color: #ffffff; /* Card / surface background */
-  --contrast-color: #ffffff; /* For text on accent elements */
+  --background-color: #f5f7fb;
+  /* Very light neutral background */
+  --default-color: #2b3338;
+  /* Primary body text */
+  --heading-color: #0b1220;
+  /* Headings */
+  --accent-color: #0f4c81;
+  /* Primary accent (deep blue) */
+  --surface-color: #ffffff;
+  /* Card / surface background */
+  --contrast-color: #ffffff;
+  /* For text on accent elements */
 }
 
 /* Dark theme variables applied when `data-theme="dark"` is set on the document root */
 [data-theme="dark"] {
-  --background-color: #081016; /* deep page background */
-  --default-color: #cfdff3; /* body text on dark */
-  --heading-color: #ffffff; /* headings */
-  --accent-color: #4da6ff; /* lighter accent for dark */
-  --surface-color: #0f1720; /* cards / surfaces */
-  --contrast-color: #ffffff; /* for text on accent */
+  --background-color: #081016;
+  /* deep page background */
+  --default-color: #cfdff3;
+  /* body text on dark */
+  --heading-color: #ffffff;
+  /* headings */
+  --accent-color: #4da6ff;
+  /* lighter accent for dark */
+  --surface-color: #0f1720;
+  /* cards / surfaces */
+  --contrast-color: #ffffff;
+  /* for text on accent */
 
   /* nav overrides on dark */
   --nav-color: #cfdff3;
@@ -51,12 +63,18 @@
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #2b3338;  /* Nav links (dark on light background) */
-  --nav-hover-color: var(--accent-color); /* Nav link hover */
-  --nav-mobile-background-color: #ffffff; /* Mobile nav background */
-  --nav-dropdown-background-color: #ffffff; /* Dropdown background */
-  --nav-dropdown-color: #2b3338; /* Dropdown link color */
-  --nav-dropdown-hover-color: var(--accent-color); /* Dropdown hover */
+  --nav-color: #2b3338;
+  /* Nav links (dark on light background) */
+  --nav-hover-color: var(--accent-color);
+  /* Nav link hover */
+  --nav-mobile-background-color: #ffffff;
+  /* Mobile nav background */
+  --nav-dropdown-background-color: #ffffff;
+  /* Dropdown background */
+  --nav-dropdown-color: #2b3338;
+  /* Dropdown link color */
+  --nav-dropdown-hover-color: var(--accent-color);
+  /* Dropdown hover */
 }
 
 /* Color Presets - Provide a consistent surface and text color while still
@@ -82,7 +100,9 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
-html { font-size: var(--base-font-size); }
+html {
+  font-size: var(--base-font-size);
+}
 
 body {
   color: var(--default-color);
@@ -100,6 +120,7 @@ a {
 }
 
 a:hover {
+  color: rgba(15, 76, 129, 0.75);
   color: color-mix(in srgb, var(--accent-color), transparent 25%);
   text-decoration: none;
 }
@@ -203,6 +224,18 @@ h6 {
   color: var(--heading-color);
 }
 
+.agency-tagline {
+  color: #0f4c81 !important;
+  /* Force Deep Blue in light mode */
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+[data-theme="dark"] .agency-tagline {
+  color: #ffffff !important;
+  /* Force White in dark mode */
+}
+
 .header .btn-getstarted,
 .header .btn-getstarted:focus {
   color: var(--contrast-color);
@@ -217,6 +250,7 @@ h6 {
 .header .btn-getstarted:hover,
 .header .btn-getstarted:focus:hover {
   color: var(--contrast-color);
+  background: rgba(15, 76, 129, 0.85);
   background: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
 
@@ -249,6 +283,7 @@ h6 {
 /* Theme toggle button styling */
 .theme-toggle {
   background: transparent;
+  border: 1px solid rgba(43, 51, 56, 0.15);
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
   color: var(--nav-color);
   font-size: 1.1rem;
@@ -269,12 +304,14 @@ h6 {
 
 .theme-toggle:focus {
   outline: none;
+  box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.15);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color), transparent 85%);
 }
 
 @media (max-width: 767px) {
   .theme-toggle {
-    display: none; /* hide on very small screens to keep header compact */
+    display: none;
+    /* hide on very small screens to keep header compact */
   }
 }
 
@@ -445,6 +482,7 @@ h6 {
     justify-content: center;
     border-radius: 50%;
     transition: 0.3s;
+    background-color: rgba(15, 76, 129, 0.1);
     background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
   }
 
@@ -474,6 +512,7 @@ h6 {
     padding: 10px 0;
     margin: 10px 20px;
     background-color: var(--nav-dropdown-background-color);
+    border: 1px solid rgba(43, 51, 56, 0.1);
     border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
     box-shadow: none;
     transition: all 0.5s ease-in-out;
@@ -528,6 +567,7 @@ h6 {
 
 .footer .footer-top {
   padding-top: 50px;
+  border-top: 1px solid rgba(43, 51, 56, 0.1);
   border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
@@ -561,8 +601,10 @@ h6 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  border: 1px solid rgba(43, 51, 56, 0.5);
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
   font-size: 16px;
+  color: rgba(43, 51, 56, 0.5);
   color: color-mix(in srgb, var(--default-color), transparent 50%);
   margin-right: 10px;
   transition: 0.3s;
@@ -1279,11 +1321,17 @@ section,
 }
 
 /* Ensure lists and headings inside cards look correct in dark mode */
-.card h1, .card h2, .card h3, .card h4, .card h5, .card h6 {
+.card h1,
+.card h2,
+.card h3,
+.card h4,
+.card h5,
+.card h6 {
   color: var(--heading-color) !important;
 }
 
-.card p, .card li {
+.card p,
+.card li {
   color: var(--default-color) !important;
 }
 
@@ -3584,13 +3632,15 @@ section,
 }
 
 .service-details .service-gallery .service-details-slider .portfolio-item .portfolio-info h5 {
-  color: #ffffff; /* bright white for clear visibility */
+  color: #ffffff;
+  /* bright white for clear visibility */
   font-weight: 700;
   margin-bottom: 5px;
 }
 
 .service-details .service-gallery .service-details-slider .portfolio-item .portfolio-info p {
-  color: rgba(255,255,255,0.95); /* near-white for readable descriptions */
+  color: rgba(255, 255, 255, 0.95);
+  /* near-white for readable descriptions */
   margin: 0;
   font-size: 14px;
 }
@@ -3601,7 +3651,7 @@ section,
 }
 
 [data-theme="dark"] .service-details .service-gallery .service-details-slider .portfolio-item .portfolio-info p {
-  color: rgba(255,255,255,0.95) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
 }
 
 .service-details .service-gallery .service-details-slider .swiper-pagination {
@@ -4091,6 +4141,7 @@ section,
 }
 
 /* Smooth theme transitions */
-html, body {
+html,
+body {
   transition: background-color 240ms ease, color 240ms ease;
 }
