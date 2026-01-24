@@ -38,6 +38,9 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- Calendly Widget Styles -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
 
 </head>
 
@@ -58,7 +61,7 @@
           <li><a href="#" class="active">Home</a></li>
           <li><a href="index.html#about">About</a></li>
           <li><a href="index.html#services">Services</a></li>
-         <li><a href="portfolio-details.html">Portfolio</a></li>
+          <li><a href="portfolio-details.html">Portfolio</a></li>
           <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -303,7 +306,7 @@
                           </div>
                         </div>
                       </div>
-            
+
                       <div class="swiper-slide">
                         <div class="portfolio-item">
                           <img src="assets/img/services-10.webp" alt="" class="img-fluid" loading="lazy">
@@ -326,7 +329,8 @@
                   <h3>Ready to Boost Your Online Presence?</h3>
                   <p>Get a free consultation with our digital marketing experts and discover how we can help grow your
                     business.</p>
-                  <a href="https://calendly.com/ciphcreativeagency/30min"target="_blank" class="btn-primary">Schedule Consultation</a>
+                  <button type="button" class="btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#calendlyModal">Schedule Consultation</button>
                   <span class="guarantee"><i class="bi bi-shield-check"></i> 100% Satisfaction Guarantee</span>
                 </div>
 
@@ -467,7 +471,8 @@
             <p>Upper Kauga</p>
             <p>P.O. Box 153979, Mukono-Uganda</p>
             <p class="mt-4"><strong>Phone:</strong> <span>+ 256 (0) 393 24 2000</span></p>
-            <p><strong>Email:</strong> <span> <span> <a href="mailto:ciphcreativeagency@gmail.com">ciphcreativeagency@gmail.com</span></p>
+            <p><strong>Email:</strong> <span> <span> <a
+                    href="mailto:ciphcreativeagency@gmail.com">ciphcreativeagency@gmail.com</span></p>
           </div>
 
         </div>
@@ -490,6 +495,24 @@
     <!-- Preloader -->
     <div id="preloader"></div>
 
+    <!-- Calendly Modal -->
+    <div class="modal fade" id="calendlyModal" tabindex="-1" aria-labelledby="calendlyModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="calendlyModalLabel">Schedule Your Consultation</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-0">
+            <!-- Calendly inline widget begin -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/ciphcreativeagency/30min"
+              style="min-width:320px;height:700px;"></div>
+            <!-- Calendly inline widget end -->
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
@@ -501,6 +524,9 @@
 
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <!-- Calendly Widget Script -->
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 </body>
 
