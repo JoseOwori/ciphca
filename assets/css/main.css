@@ -135,6 +135,18 @@ h6 {
   font-family: var(--heading-font);
 }
 
+/*--------------------------------------------------------------
+# Cards
+--------------------------------------------------------------*/
+.card,
+.legal-content .card {
+  --bs-card-bg: var(--surface-color);
+  --bs-card-color: var(--default-color);
+  background-color: var(--surface-color);
+  color: var(--default-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
 /* PHP Email Form Messages
 ------------------------------*/
 .php-email-form .error-message {
