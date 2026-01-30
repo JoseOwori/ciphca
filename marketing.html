@@ -157,11 +157,11 @@
 
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
           <h4>Contact Us</h4>
-          <p>A108 Adam Street</p>
-          <p>New York, NY 535022</p>
-          <p>United States</p>
+          <p>Upper Kauga</p>
+          <p>P.O. Box153979, Mukono-Uganda</p>
           <p class="mt-4"><strong>Phone:</strong> <span>+ 256 (0) 393 24 2000</span></p>
-          <p><strong>Email:</strong> <span> ciphcreativeagency@gmail.com</span></p>
+          <p><strong>Email:</strong> <span> <span> <a
+                  href="mailto:ciphcreativeagency@gmail.com">ciphcreativeagency@gmail.com</span></p>
         </div>
 
       </div>
@@ -198,6 +198,26 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Ensure Marketing heading is visible on page load (accounts for fixed header) -->
+  <script>
+    (function(){
+      var el = document.getElementById('marketing-section');
+      if (!el) return;
+      function scrollToEl(){
+        var header = document.getElementById('header');
+        var headerHeight = header ? header.offsetHeight : 0;
+        var rect = el.getBoundingClientRect();
+        var top = window.scrollY + rect.top - headerHeight - 10;
+        window.scrollTo({ top: top, left: 0, behavior: 'auto' });
+      }
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        setTimeout(scrollToEl, 50);
+      } else {
+        window.addEventListener('load', function(){ setTimeout(scrollToEl, 50); });
+      }
+    })();
+  </script>
 
 </body>
 
