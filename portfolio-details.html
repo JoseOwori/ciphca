@@ -206,10 +206,11 @@
                 </p>
 
                 <div class="accordion project-accordion" id="portfolio-details-projectAccordion">
-                      <div class="accordion-item" data-aos="fade-up">
+                  <div class="accordion-item" data-aos="fade-up">
                     <h2 class="accordion-header">
                       <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#portfolio-details-collapse-1" aria-expanded="true" aria-controls="portfolio-details-collapse-1">
+                        data-bs-target="#portfolio-details-collapse-1" aria-expanded="true"
+                        aria-controls="portfolio-details-collapse-1">
                         <i class="bi bi-clipboard-data me-2"></i> Project Overview
                       </button>
                     </h2>
@@ -255,9 +256,12 @@
                     <div id="portfolio-details-collapse-3" class="accordion-collapse collapse"
                       data-bs-parent="#portfolio-details-projectAccordion">
                       <div class="accordion-body">
-                        <p>Adopt a phased plan: analyze causes, define measurable goals, and prioritize features. Create rapid prototypes to
-                        validate assumptions, run iterative sprints with cross-functional teams, collect user feedback, and monitor metrics to
-                        deliver scalable, resilient solutions that improve user outcomes.</p>    </div>
+                        <p>Adopt a phased plan: analyze causes, define measurable goals, and prioritize features. Create
+                          rapid prototypes to
+                          validate assumptions, run iterative sprints with cross-functional teams, collect user
+                          feedback, and monitor metrics to
+                          deliver scalable, resilient solutions that improve user outcomes.</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -353,11 +357,6 @@
       <p>© <span>Copyright</span> <strong class="px-1 sitename">Ciph Creative Agency</strong> <span>All Rights
           Reserved</span></p>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
 
@@ -384,16 +383,16 @@
 
   <!-- Fallback: ensure Bootstrap collapse instances are initialized and buttons toggle -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       try {
         if (window.bootstrap) {
-          document.querySelectorAll('.accordion-collapse').forEach(function(el){
+          document.querySelectorAll('.accordion-collapse').forEach(function (el) {
             // create instance without toggling open state
             bootstrap.Collapse.getOrCreateInstance(el, { toggle: false });
           });
 
-          document.querySelectorAll('.accordion-button').forEach(function(btn){
-            btn.addEventListener('click', function(e){
+          document.querySelectorAll('.accordion-button').forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
               var selector = btn.getAttribute('data-bs-target');
               if (!selector) return;
               var target = document.querySelector(selector);
@@ -410,7 +409,7 @@
                   btn.classList.remove('collapsed');
                   btn.setAttribute('aria-expanded', 'true');
                 }
-              } catch (e) {}
+              } catch (e) { }
             });
           });
         }
@@ -422,10 +421,10 @@
 
   <!-- Plain-JS accordion polyfill (works if Bootstrap JS fails) -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       try {
-        document.querySelectorAll('.accordion-button').forEach(function(btn) {
-          btn.addEventListener('click', function(e) {
+        document.querySelectorAll('.accordion-button').forEach(function (btn) {
+          btn.addEventListener('click', function (e) {
             e.preventDefault();
             var selector = btn.getAttribute('data-bs-target') || btn.getAttribute('href');
             if (!selector) return;
@@ -435,7 +434,7 @@
             var parentSelector = target.getAttribute('data-bs-parent');
             // close other open panels within same parent
             if (parentSelector) {
-              document.querySelectorAll(parentSelector + ' .accordion-collapse.show').forEach(function(open) {
+              document.querySelectorAll(parentSelector + ' .accordion-collapse.show').forEach(function (open) {
                 if (open !== target) {
                   open.classList.remove('show');
                   var id = '#' + open.id;
