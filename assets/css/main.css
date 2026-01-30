@@ -77,6 +77,18 @@
   /* Dropdown hover */
 }
 
+/* Make the legal page timestamp theme-aware and always readable */
+.legal-last-updated {
+  color: var(--default-color);
+  opacity: 0.85;
+}
+
+/* Slightly brighter in dark mode for contrast */
+[data-theme="dark"] .legal-last-updated {
+  color: var(--default-color);
+  opacity: 0.95;
+}
+
 /* Color Presets - Provide a consistent surface and text color while still
    respecting the site's theme variables. Using the CSS variables here
    (instead of overriding them) makes these utility classes respond to
@@ -133,6 +145,18 @@ h5,
 h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
+}
+
+/*--------------------------------------------------------------
+# Cards
+--------------------------------------------------------------*/
+.card,
+.legal-content .card {
+  --bs-card-bg: var(--surface-color);
+  --bs-card-color: var(--default-color);
+  background-color: var(--surface-color);
+  color: var(--default-color);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 /* PHP Email Form Messages

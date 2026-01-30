@@ -206,10 +206,10 @@
                 </p>
 
                 <div class="accordion project-accordion" id="portfolio-details-projectAccordion">
-                  <div class="accordion-item" data-aos="fade-up">
+                      <div class="accordion-item" data-aos="fade-up">
                     <h2 class="accordion-header">
                       <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#portfolio-details-collapse-1" aria-expanded="true" aria-controls="collapseOne">
+                        data-bs-target="#portfolio-details-collapse-1" aria-expanded="true" aria-controls="portfolio-details-collapse-1">
                         <i class="bi bi-clipboard-data me-2"></i> Project Overview
                       </button>
                     </h2>
@@ -230,16 +230,16 @@
                     <h2 class="accordion-header">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#portfolio-details-collapse-2" aria-expanded="false"
-                        aria-controls="collapseTwo">
+                        aria-controls="portfolio-details-collapse-2">
                         <i class="bi bi-exclamation-diamond me-2"></i> The Challenge
                       </button>
                     </h2>
                     <div id="portfolio-details-collapse-2" class="accordion-collapse collapse"
                       data-bs-parent="#portfolio-details-projectAccordion">
                       <div class="accordion-body">
-                        <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus suscipit tortor eget
-                          felis porttitor volutpat. Curabitur aliquet quam id dui posuere blandit. Praesent sapien
-                          massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh.</p>
+                        <p>In the face of adversity, we find our true strength. Embrace each challenge as a stepping
+                          stone towards greatness. With determination and resilience, we can overcome any obstacle. Let
+                          your courage shine through, and inspire others to rise alongside you.</p>
                       </div>
                     </div>
                   </div>
@@ -248,18 +248,16 @@
                     <h2 class="accordion-header">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#portfolio-details-collapse-3" aria-expanded="false"
-                        aria-controls="collapseThree">
+                        aria-controls="portfolio-details-collapse-3">
                         <i class="bi bi-award me-2"></i> The Solution
                       </button>
                     </h2>
                     <div id="portfolio-details-collapse-3" class="accordion-collapse collapse"
                       data-bs-parent="#portfolio-details-projectAccordion">
                       <div class="accordion-body">
-                        <p>Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et,
-                          porttitor at sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-                          cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
-                        </p>
-                      </div>
+                        <p>Adopt a phased plan: analyze causes, define measurable goals, and prioritize features. Create rapid prototypes to
+                        validate assumptions, run iterative sprints with cross-functional teams, collect user feedback, and monitor metrics to
+                        deliver scalable, resilient solutions that improve user outcomes.</p>    </div>
                     </div>
                   </div>
                 </div>
@@ -310,7 +308,7 @@
           <p>Transforming Ideas into Digital Excellence across East Africa.</p>
           <div class="social-links d-flex mt-4">
             <a href="https://x.com/MattOwori" target="_blank"><i class="bi bi-twitter-x"></i></a>
-            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="https://bsky.app/profile/jm-att.bsky.social" target="_blank"><i class="bi bi-bluesky"></i></a>
             <a href="https://www.instagram.com/ciphcreativeangency/" target="_blank"><i class="bi bi-instagram"></i></a>
             <a href="https://www.linkedin.com/company/105421414/admin/dashboard/" target="_blank"><i
                 class="bi bi-linkedin"></i></a>
@@ -383,6 +381,90 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Fallback: ensure Bootstrap collapse instances are initialized and buttons toggle -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        if (window.bootstrap) {
+          document.querySelectorAll('.accordion-collapse').forEach(function(el){
+            // create instance without toggling open state
+            bootstrap.Collapse.getOrCreateInstance(el, { toggle: false });
+          });
+
+          document.querySelectorAll('.accordion-button').forEach(function(btn){
+            btn.addEventListener('click', function(e){
+              var selector = btn.getAttribute('data-bs-target');
+              if (!selector) return;
+              var target = document.querySelector(selector);
+              if (!target) return;
+              var collapseInst = bootstrap.Collapse.getOrCreateInstance(target);
+              var wasShown = target.classList.contains('show');
+              collapseInst.toggle();
+              // Update button visual state for fallback
+              try {
+                if (wasShown) {
+                  btn.classList.add('collapsed');
+                  btn.setAttribute('aria-expanded', 'false');
+                } else {
+                  btn.classList.remove('collapsed');
+                  btn.setAttribute('aria-expanded', 'true');
+                }
+              } catch (e) {}
+            });
+          });
+        }
+      } catch (err) {
+        console && console.error('Accordion init fallback error:', err);
+      }
+    });
+  </script>
+
+  <!-- Plain-JS accordion polyfill (works if Bootstrap JS fails) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        document.querySelectorAll('.accordion-button').forEach(function(btn) {
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            var selector = btn.getAttribute('data-bs-target') || btn.getAttribute('href');
+            if (!selector) return;
+            var target = document.querySelector(selector);
+            if (!target) return;
+
+            var parentSelector = target.getAttribute('data-bs-parent');
+            // close other open panels within same parent
+            if (parentSelector) {
+              document.querySelectorAll(parentSelector + ' .accordion-collapse.show').forEach(function(open) {
+                if (open !== target) {
+                  open.classList.remove('show');
+                  var id = '#' + open.id;
+                  var otherBtn = document.querySelector('[data-bs-target="' + id + '"]');
+                  if (otherBtn) {
+                    otherBtn.classList.add('collapsed');
+                    otherBtn.setAttribute('aria-expanded', 'false');
+                  }
+                }
+              });
+            }
+
+            var isShown = target.classList.contains('show');
+            if (isShown) {
+              target.classList.remove('show');
+              btn.classList.add('collapsed');
+              btn.setAttribute('aria-expanded', 'false');
+            } else {
+              target.classList.add('show');
+              btn.classList.remove('collapsed');
+              btn.setAttribute('aria-expanded', 'true');
+            }
+          });
+        });
+      } catch (err) {
+        console && console.error('Accordion polyfill error:', err);
+      }
+    });
+  </script>
 
 </body>
 
