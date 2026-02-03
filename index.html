@@ -180,6 +180,34 @@
                   <p>Successful Campaigns</p>
                 </div>
                 <div class="stats-arrow">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M8 16L16 24L24 8" stroke="#4F8CFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <style>
+                  .stats-arrow {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 8px 0;
+                    animation: arrow-bounce 1.2s infinite;
+                  }
+
+                  .stats-arrow svg {
+                    width: 32px;
+                    height: 32px;
+                    filter: drop-shadow(0 2px 6px rgba(79, 140, 255, 0.18));
+                  }
+
+                  .stats-arrow svg path {
+                    stroke: #4F8CFF;
+                  }
+
+                  @keyframes arrow-bounce {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-6px); }
+                  }
+                </style>
                   <a href="index.html#services">View Services <i class="bi bi-arrow-up-right"></i></a>
                 </div>
               </div>
