@@ -4,7 +4,7 @@
 
 .ciph-chatbot {
   position: fixed;
-  bottom: 20px;
+  bottom: 100px; /* Moved up to avoid scroll-to-top button */
   right: 20px;
   z-index: 9999;
   font-family: 'Inter', sans-serif;
@@ -367,13 +367,13 @@
 @media (max-width: 480px) {
   .chatbot-window {
     width: calc(100vw - 40px);
-    height: calc(100vh - 100px);
+    height: calc(100vh - 180px); /* Adjusted for higher chatbot position */
     bottom: 80px;
     right: 20px;
   }
   
   .ciph-chatbot {
-    bottom: 20px;
+    bottom: 100px;
     right: 15px;
   }
 }
