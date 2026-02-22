@@ -104,19 +104,19 @@ class CiphChatbot {
   showWelcomeMessage() {
     setTimeout(() => {
       this.addBotMessage(
-        "Hi there! 👋 Welcome to Ciph Creative Agency!\n\nWe're a leading digital agency in East Africa specializing in web development, design, and digital marketing.",
+        "Hi! 👋 I'm here to help you find the right service.\n\n" +
+        "What brings you here today?",
         false
       );
       
       setTimeout(() => {
-        this.addBotMessage("How can I help you today?");
         this.showQuickReplies([
-          { text: '🌐 Web Development', value: 'web_dev' },
-          { text: '🎨 Web Design', value: 'web_design' },
-          { text: '📱 Digital Marketing', value: 'marketing' },
-          { text: '💼 All Services', value: 'all_services' }
+          { text: 'Build a Website', value: 'web_dev' },
+          { text: 'Improve My Design', value: 'web_design' },
+          { text: 'Grow My Business', value: 'marketing' },
+          { text: 'See All Services', value: 'all_services' }
         ]);
-      }, 1200);
+      }, 800);
     }, 1000);
   }
 
@@ -181,76 +181,52 @@ class CiphChatbot {
   handleWebDevelopment() {
     this.conversationState = 'web_dev';
     this.addBotMessage(
-      "Excellent choice! 💻 Our Web Development services include:\n\n" +
-      "✅ Custom Website Development\n" +
-      "✅ Progressive Web Apps (PWAs)\n" +
-      "✅ E-commerce Solutions\n" +
-      "✅ Backend & Frontend Development\n" +
-      "✅ Full Stack Development\n" +
-      "✅ Website Maintenance & Support\n\n" +
-      "We build scalable, secure, and high-performance websites!"
+      "Great! I can help you build a website. 💻\n\n" +
+      "What type of website do you need?"
     );
     
     setTimeout(() => {
-      this.addBotMessage("What type of web development do you need?");
       this.showQuickReplies([
-        { text: 'Custom Website', value: 'custom_website' },
-        { text: 'E-commerce Store', value: 'ecommerce' },
-        { text: 'Progressive Web App', value: 'pwa' },
-        { text: 'Get a Quote', value: 'quote' },
-        { text: '❌ Close', value: 'close' }
+        { text: 'Business Website', value: 'business_website' },
+        { text: 'Online Store', value: 'ecommerce' },
+        { text: 'Custom Solution', value: 'custom_solution' },
+        { text: 'Not Sure Yet', value: 'consultation' }
       ]);
-    }, 1000);
+    }, 800);
   }
 
   handleWebDesign() {
     this.conversationState = 'web_design';
     this.addBotMessage(
-      "Great! 🎨 Our Web Design services focus on:\n\n" +
-      "✅ Responsive Web Design\n" +
-      "✅ UX/UI Design\n" +
-      "✅ Conversion-Focused Layouts\n" +
-      "✅ Mobile-First Design\n" +
-      "✅ Landing Page Design\n" +
-      "✅ Website Redesign\n\n" +
-      "We create designs that convert visitors into customers!"
+      "Perfect! Let's improve your design. 🎨\n\n" +
+      "What do you need help with?"
     );
     
     setTimeout(() => {
-      this.addBotMessage("What's your main goal?");
       this.showQuickReplies([
-        { text: 'New Website Design', value: 'new_design' },
-        { text: 'Redesign Existing Site', value: 'redesign' },
-        { text: 'Landing Page', value: 'landing' },
-        { text: 'View Portfolio', value: 'portfolio' },
-        { text: '❌ Close', value: 'close' }
+        { text: 'New Design', value: 'new_design' },
+        { text: 'Redesign Current Site', value: 'redesign' },
+        { text: 'Logo & Branding', value: 'branding' },
+        { text: 'Talk to Designer', value: 'expert' }
       ]);
-    }, 1000);
+    }, 800);
   }
 
   handleMarketing() {
     this.conversationState = 'marketing';
     this.addBotMessage(
-      "Perfect! 📈 Our Digital Marketing services include:\n\n" +
-      "✅ SEO Optimization\n" +
-      "✅ Social Media Marketing\n" +
-      "✅ Content Marketing\n" +
-      "✅ Performance Marketing\n" +
-      "✅ Campaign Strategy\n" +
-      "✅ Analytics & Reporting\n\n" +
-      "We help businesses grow their online presence!"
+      "Excellent! Let's grow your business. 📈\n\n" +
+      "What's your main goal?"
     );
     
     setTimeout(() => {
-      this.addBotMessage("Which marketing service interests you most?");
       this.showQuickReplies([
-        { text: 'SEO Services', value: 'seo' },
-        { text: 'Social Media', value: 'social_media' },
-        { text: 'Full Marketing', value: 'full_marketing' },
-        { text: 'Free Consultation', value: 'consultation' },
-        { text: '❌ Close', value: 'close' }
+        { text: 'Get More Customers', value: 'get_customers' },
+        { text: 'Improve SEO', value: 'seo' },
+        { text: 'Social Media Help', value: 'social_media' },
+        { text: 'Full Marketing Plan', value: 'full_marketing' }
       ]);
-    }, 1000);
+    }, 800);
   }
 
   handleGraphicDesign() {
@@ -379,31 +355,26 @@ class CiphChatbot {
   }
 
   handleAllServices() {
-    this.addBotMessage(
-      "Here's everything we offer! 🌟\n\n" +
-      "🌐 Web Development\n" +
-      "🎨 Web Design\n" +
-      "📱 Digital Marketing\n" +
-      "🖼️ Graphic Design & Branding\n" +
-      "💼 Product Management\n" +
-      "☁️ Microsoft 365 Support\n" +
-      "🛒 E-commerce Solutions\n" +
-      "📲 Progressive Web Apps\n" +
-      "🔧 Website Maintenance\n\n" +
-      "We serve businesses across East Africa!"
-    );
-    
-    setTimeout(() => {
-      this.addBotMessage("Which service interests you most?");
-      this.showQuickReplies([
-        { text: '🌐 Web Development', value: 'web_dev' },
-        { text: '🎨 Web Design', value: 'web_design' },
-        { text: '📱 Marketing', value: 'marketing' },
-        { text: '💼 More Services', value: 'more_services' },
-        { text: '❌ Close', value: 'close' }
-      ]);
-    }, 1500);
-  }
+      this.addBotMessage(
+        "Here's what we do best! 🌟\n\n" +
+        "🌐 Website Development\n" +
+        "🎨 Design & Branding\n" +
+        "📱 Digital Marketing\n" +
+        "🛒 E-commerce Stores\n" +
+        "☁️ Microsoft 365 Support\n\n" +
+        "What interests you?"
+      );
+
+      setTimeout(() => {
+        this.showQuickReplies([
+          { text: 'Build Website', value: 'web_dev' },
+          { text: 'Design Help', value: 'web_design' },
+          { text: 'Marketing', value: 'marketing' },
+          { text: 'Talk to Us', value: 'consultation' }
+        ]);
+      }, 1000);
+    }
+
 
   handlePricingInquiry() {
     this.addBotMessage(
@@ -568,66 +539,77 @@ class CiphChatbot {
       setTimeout(() => {
         this.closeConversation();
       }, 2000);
-    } else if (value === 'quote') {
+    } else if (value === 'business_website' || value === 'custom_solution' || value === 'new_design' || 
+               value === 'redesign' || value === 'branding' || value === 'get_customers' || 
+               value === 'seo' || value === 'social_media' || value === 'full_marketing') {
+      // All specific service requests lead to contact
       this.addBotMessage(
-        "Great! To provide an accurate quote, I'll connect you with our team.\n\n" +
-        "Please reach out via:\n" +
-        "📱 WhatsApp: +256 393 24 2000\n" +
-        "📧 Email: ciphcreativeagency@gmail.com\n\n" +
-        "We'll respond with a custom quote within 24 hours!"
+        "Perfect! Let's discuss your project. 🚀\n\n" +
+        "Our team will provide:\n" +
+        "✅ Free consultation\n" +
+        "✅ Custom quote within 24 hours\n" +
+        "✅ Project timeline\n\n" +
+        "How would you like to connect?"
       );
       setTimeout(() => {
         this.showQuickReplies([
-          { text: '📱 WhatsApp Now', value: 'whatsapp' },
-          { text: '📧 Send Email', value: 'send_email' },
-          { text: '❌ Close Chat', value: 'close' }
+          { text: '📱 WhatsApp (Fastest)', value: 'whatsapp' },
+          { text: '📧 Email', value: 'send_email' },
+          { text: '📅 Schedule Call', value: 'schedule' }
         ]);
       }, 1000);
-    } else if (value === 'consultation') {
+    } else if (value === 'ecommerce') {
       this.addBotMessage(
-        "Perfect! Let's schedule your FREE consultation! 🎯\n\n" +
-        "During the call, we'll:\n" +
-        "✅ Discuss your goals\n" +
-        "✅ Review your current situation\n" +
-        "✅ Recommend solutions\n" +
-        "✅ Answer all your questions\n\n" +
-        "Book your slot now!"
+        "Great choice! We build online stores that sell. 🛒\n\n" +
+        "We'll help you with:\n" +
+        "✅ Product catalog\n" +
+        "✅ Payment integration\n" +
+        "✅ Inventory management\n" +
+        "✅ Mobile shopping\n\n" +
+        "Let's discuss your store!"
       );
       setTimeout(() => {
         this.showQuickReplies([
-          { text: '📅 Schedule Now', value: 'schedule' },
-          { text: '📱 WhatsApp Instead', value: 'whatsapp' },
-          { text: '❌ Close Chat', value: 'close' }
+          { text: '📱 WhatsApp Us', value: 'whatsapp' },
+          { text: '📧 Email Us', value: 'send_email' },
+          { text: '📅 Schedule Call', value: 'schedule' }
+        ]);
+      }, 1000);
+    } else if (value === 'consultation' || value === 'expert') {
+      this.addBotMessage(
+        "Smart move! Let's schedule a FREE consultation. 🎯\n\n" +
+        "We'll discuss:\n" +
+        "✅ Your goals\n" +
+        "✅ Best solutions\n" +
+        "✅ Timeline & budget\n" +
+        "✅ Next steps\n\n" +
+        "Choose your preferred way to connect:"
+      );
+      setTimeout(() => {
+        this.showQuickReplies([
+          { text: '📅 Book a Call', value: 'schedule' },
+          { text: '📱 WhatsApp Chat', value: 'whatsapp' },
+          { text: '📧 Email Instead', value: 'send_email' }
         ]);
       }, 1000);
     } else if (value === 'portfolio' || value === 'view_portfolio') {
       window.open('https://ciphca.com/portfolio-details.html', '_blank');
       this.addBotMessage(
-        "Opening our portfolio in a new tab... 🎨\n\n" +
-        "Check out our work and see what we can do for you!"
+        "Opening our portfolio... 🎨\n\n" +
+        "Check out our work!"
       );
       setTimeout(() => {
-        this.addBotMessage("Did you find what you were looking for?");
+        this.addBotMessage("Like what you see?");
         this.showQuickReplies([
-          { text: '✅ Yes, Contact Me', value: 'contact' },
-          { text: '🔙 See More Services', value: 'all_services' },
-          { text: '❌ Close Chat', value: 'close' }
+          { text: '✅ Yes, Let\'s Talk', value: 'consultation' },
+          { text: '🔙 See Services', value: 'all_services' },
+          { text: '❌ Close', value: 'close' }
         ]);
       }, 2000);
-    } else if (value === 'expert' || value === 'get_started') {
-      this.addBotMessage(
-        "Let's get you started! 🚀\n\n" +
-        "Our team is ready to help. Choose your preferred contact method:"
-      );
-      setTimeout(() => {
-        this.showQuickReplies([
-          { text: '📱 WhatsApp Chat', value: 'whatsapp' },
-          { text: '📧 Email Us', value: 'send_email' },
-          { text: '📅 Schedule Call', value: 'schedule' }
-        ]);
-      }, 800);
-    } else if (value === 'all_services' || value === 'main_menu') {
+    } else if (value === 'all_services') {
       this.handleAllServices();
+    } else if (value === 'more_services') {
+      this.handleMoreServices();
     } else if (value === 'contact') {
       this.handleContactInquiry();
     } else if (value === 'close') {
