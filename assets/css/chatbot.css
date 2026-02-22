@@ -4,10 +4,17 @@
 
 .ciph-chatbot {
   position: fixed;
-  bottom: 20px;
+  bottom: 100px; /* Moved up to avoid scroll-to-top button */
   right: 20px;
   z-index: 9999;
   font-family: 'Inter', sans-serif;
+}
+
+/* Ensure scroll-to-top button doesn't overlap with chatbot */
+#scroll-top {
+  bottom: 20px !important;
+  right: 100px !important;
+  z-index: 9998 !important;
 }
 
 /* Toggle Button */
@@ -367,13 +374,13 @@
 @media (max-width: 480px) {
   .chatbot-window {
     width: calc(100vw - 40px);
-    height: calc(100vh - 100px);
+    height: calc(100vh - 180px); /* Adjusted for higher chatbot position */
     bottom: 80px;
     right: 20px;
   }
   
   .ciph-chatbot {
-    bottom: 15px;
+    bottom: 100px;
     right: 15px;
   }
 }
