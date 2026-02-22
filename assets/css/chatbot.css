@@ -10,13 +10,6 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* Ensure scroll-to-top button doesn't overlap with chatbot */
-#scroll-top {
-  bottom: 20px !important;
-  right: 100px !important;
-  z-index: 9998 !important;
-}
-
 /* Toggle Button */
 .chatbot-toggle {
   width: 60px;
