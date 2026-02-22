@@ -104,18 +104,19 @@ class CiphChatbot {
   showWelcomeMessage() {
     setTimeout(() => {
       this.addBotMessage(
-        "Hi there! 👋 I'm here to help you with our FREE services!",
+        "Hi there! 👋 Welcome to Ciph Creative Agency!\n\nWe're a leading digital agency in East Africa specializing in web development, design, and digital marketing.",
         false
       );
       
       setTimeout(() => {
+        this.addBotMessage("How can I help you today?");
         this.showQuickReplies([
-          { text: '📧 Email Notifications', value: 'email' },
-          { text: '📱 Social Media Auto-Post', value: 'social' },
-          { text: '🔍 Market Research AI', value: 'research' },
-          { text: '💻 GitHub Setup', value: 'github' }
+          { text: '🌐 Web Development', value: 'web_dev' },
+          { text: '🎨 Web Design', value: 'web_design' },
+          { text: '📱 Digital Marketing', value: 'marketing' },
+          { text: '💼 All Services', value: 'all_services' }
         ]);
-      }, 800);
+      }, 1200);
     }, 1000);
   }
 
@@ -141,18 +142,30 @@ class CiphChatbot {
       this.hideTypingIndicator();
       
       // Route to appropriate response
-      if (lowerMessage.includes('email') || lowerMessage.includes('notification')) {
-        this.handleEmailInquiry();
-      } else if (lowerMessage.includes('social') || lowerMessage.includes('post') || lowerMessage.includes('facebook') || lowerMessage.includes('instagram')) {
-        this.handleSocialMediaInquiry();
-      } else if (lowerMessage.includes('research') || lowerMessage.includes('market') || lowerMessage.includes('competitor')) {
-        this.handleMarketResearchInquiry();
-      } else if (lowerMessage.includes('github') || lowerMessage.includes('technical') || lowerMessage.includes('setup') || lowerMessage.includes('deploy')) {
-        this.handleGithubInquiry();
-      } else if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('free')) {
+      if (lowerMessage.includes('web dev') || lowerMessage.includes('development') || lowerMessage.includes('software') || lowerMessage.includes('backend') || lowerMessage.includes('frontend')) {
+        this.handleWebDevelopment();
+      } else if (lowerMessage.includes('web design') || lowerMessage.includes('design') || lowerMessage.includes('ui') || lowerMessage.includes('ux') || lowerMessage.includes('responsive')) {
+        this.handleWebDesign();
+      } else if (lowerMessage.includes('marketing') || lowerMessage.includes('seo') || lowerMessage.includes('digital') || lowerMessage.includes('campaign')) {
+        this.handleMarketing();
+      } else if (lowerMessage.includes('graphic') || lowerMessage.includes('branding') || lowerMessage.includes('logo')) {
+        this.handleGraphicDesign();
+      } else if (lowerMessage.includes('product') || lowerMessage.includes('management') || lowerMessage.includes('strategy')) {
+        this.handleProductManagement();
+      } else if (lowerMessage.includes('microsoft') || lowerMessage.includes('365') || lowerMessage.includes('office')) {
+        this.handleMicrosoft365();
+      } else if (lowerMessage.includes('ecommerce') || lowerMessage.includes('e-commerce') || lowerMessage.includes('shop') || lowerMessage.includes('store')) {
+        this.handleEcommerce();
+      } else if (lowerMessage.includes('pwa') || lowerMessage.includes('progressive') || lowerMessage.includes('app')) {
+        this.handlePWA();
+      } else if (lowerMessage.includes('all services') || lowerMessage.includes('services') || lowerMessage.includes('what do you')) {
+        this.handleAllServices();
+      } else if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('quote') || lowerMessage.includes('budget')) {
         this.handlePricingInquiry();
-      } else if (lowerMessage.includes('contact') || lowerMessage.includes('call') || lowerMessage.includes('phone')) {
+      } else if (lowerMessage.includes('contact') || lowerMessage.includes('call') || lowerMessage.includes('phone') || lowerMessage.includes('email')) {
         this.handleContactInquiry();
+      } else if (lowerMessage.includes('portfolio') || lowerMessage.includes('work') || lowerMessage.includes('projects') || lowerMessage.includes('examples')) {
+        this.handlePortfolio();
       } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
         this.handleGreeting();
       } else {
@@ -161,117 +174,273 @@ class CiphChatbot {
     }, 1500);
   }
 
-  handleEmailInquiry() {
-    this.conversationState = 'email';
+  handleWebDevelopment() {
+    this.conversationState = 'web_dev';
     this.addBotMessage(
-      "Great choice! 📧 Our FREE email notification setup includes:\n\n" +
-      "✅ Contact form notifications\n" +
-      "✅ Order confirmations\n" +
-      "✅ Customer welcome emails\n" +
-      "✅ Status updates\n\n" +
-      "This is 100% FREE for East African businesses!"
+      "Excellent choice! 💻 Our Web Development services include:\n\n" +
+      "✅ Custom Website Development\n" +
+      "✅ Progressive Web Apps (PWAs)\n" +
+      "✅ E-commerce Solutions\n" +
+      "✅ Backend & Frontend Development\n" +
+      "✅ Full Stack Development\n" +
+      "✅ Website Maintenance & Support\n\n" +
+      "We build scalable, secure, and high-performance websites!"
     );
     
     setTimeout(() => {
-      this.addBotMessage("What type of notifications do you need?");
+      this.addBotMessage("What type of web development do you need?");
       this.showQuickReplies([
-        { text: 'Contact Form Alerts', value: 'contact_form' },
-        { text: 'E-commerce Orders', value: 'ecommerce' },
-        { text: 'Customer Emails', value: 'customer' },
-        { text: 'All of the Above', value: 'all_email' }
+        { text: 'Custom Website', value: 'custom_website' },
+        { text: 'E-commerce Store', value: 'ecommerce' },
+        { text: 'Progressive Web App', value: 'pwa' },
+        { text: 'Get a Quote', value: 'quote' }
       ]);
     }, 1000);
   }
 
-  handleSocialMediaInquiry() {
-    this.conversationState = 'social';
+  handleWebDesign() {
+    this.conversationState = 'web_design';
     this.addBotMessage(
-      "Awesome! 🎉 Let's automate your social media!\n\n" +
-      "With our FREE setup, you can:\n" +
-      "📱 Auto-post to Facebook, Instagram, Twitter/X, LinkedIn\n" +
-      "⏰ Schedule posts in advance\n" +
-      "🔄 Cross-post to multiple platforms\n" +
-      "📊 Track basic analytics"
+      "Great! 🎨 Our Web Design services focus on:\n\n" +
+      "✅ Responsive Web Design\n" +
+      "✅ UX/UI Design\n" +
+      "✅ Conversion-Focused Layouts\n" +
+      "✅ Mobile-First Design\n" +
+      "✅ Landing Page Design\n" +
+      "✅ Website Redesign\n\n" +
+      "We create designs that convert visitors into customers!"
     );
     
     setTimeout(() => {
-      this.addBotMessage("Which platforms do you want to connect?");
+      this.addBotMessage("What's your main goal?");
       this.showQuickReplies([
-        { text: 'Facebook', value: 'facebook' },
-        { text: 'Instagram', value: 'instagram' },
-        { text: 'Twitter/X', value: 'twitter' },
-        { text: 'All Platforms', value: 'all_social' }
+        { text: 'New Website Design', value: 'new_design' },
+        { text: 'Redesign Existing Site', value: 'redesign' },
+        { text: 'Landing Page', value: 'landing' },
+        { text: 'View Portfolio', value: 'portfolio' }
       ]);
     }, 1000);
   }
 
-  handleMarketResearchInquiry() {
-    this.conversationState = 'research';
+  handleMarketing() {
+    this.conversationState = 'marketing';
     this.addBotMessage(
-      "Excellent! 🎯 Our FREE Market Research AI provides:\n\n" +
-      "🔍 Competitor analysis\n" +
-      "📊 Target audience insights\n" +
-      "📈 Market trends in East Africa\n" +
-      "💰 Pricing strategies\n" +
-      "🎁 Growth opportunities\n\n" +
-      "You'll get a detailed PDF report worth $500+ for FREE!"
+      "Perfect! 📈 Our Digital Marketing services include:\n\n" +
+      "✅ SEO Optimization\n" +
+      "✅ Social Media Marketing\n" +
+      "✅ Content Marketing\n" +
+      "✅ Performance Marketing\n" +
+      "✅ Campaign Strategy\n" +
+      "✅ Analytics & Reporting\n\n" +
+      "We help businesses grow their online presence!"
     );
     
     setTimeout(() => {
-      this.addBotMessage("To get started, I need a few details:");
+      this.addBotMessage("Which marketing service interests you most?");
       this.showQuickReplies([
-        { text: 'Share My Business Info', value: 'business_info' },
-        { text: 'Learn More First', value: 'learn_more' },
-        { text: 'Talk to Human', value: 'human' }
+        { text: 'SEO Services', value: 'seo' },
+        { text: 'Social Media', value: 'social_media' },
+        { text: 'Full Marketing', value: 'full_marketing' },
+        { text: 'Free Consultation', value: 'consultation' }
       ]);
     }, 1000);
   }
 
-  handleGithubInquiry() {
-    this.conversationState = 'github';
+  handleGraphicDesign() {
+    this.conversationState = 'graphic';
     this.addBotMessage(
-      "Nice! 💻 Our FREE Advanced Technical Setup includes:\n\n" +
-      "🔧 GitHub repository setup\n" +
-      "🚀 CI/CD pipeline automation\n" +
-      "☁️ Cloud infrastructure\n" +
-      "🔐 Security best practices\n\n" +
-      "⚠️ This is slightly technical but we'll guide you!"
+      "Awesome! 🎨 Our Graphic Design services include:\n\n" +
+      "✅ Business Branding\n" +
+      "✅ Logo Design\n" +
+      "✅ Marketing Materials\n" +
+      "✅ Social Media Graphics\n" +
+      "✅ Brand Identity\n" +
+      "✅ Print Design\n\n" +
+      "We create visuals that make your brand memorable!"
     );
     
     setTimeout(() => {
-      this.addBotMessage("What's your technical level?");
+      this.addBotMessage("What do you need designed?");
       this.showQuickReplies([
-        { text: 'Beginner', value: 'beginner' },
-        { text: 'Intermediate', value: 'intermediate' },
-        { text: 'Advanced', value: 'advanced' }
+        { text: 'Logo & Branding', value: 'branding' },
+        { text: 'Marketing Materials', value: 'marketing_materials' },
+        { text: 'Social Graphics', value: 'social_graphics' },
+        { text: 'Get Started', value: 'get_started' }
       ]);
     }, 1000);
+  }
+
+  handleProductManagement() {
+    this.conversationState = 'product';
+    this.addBotMessage(
+      "Excellent! 💼 Our Product Management services help you:\n\n" +
+      "✅ Define Product Strategy\n" +
+      "✅ Create Roadmaps\n" +
+      "✅ Validate Ideas\n" +
+      "✅ Prioritize Features\n" +
+      "✅ Improve Product-Market Fit\n" +
+      "✅ Drive Growth\n\n" +
+      "We turn ideas into successful products!"
+    );
+    
+    setTimeout(() => {
+      this.addBotMessage("Where are you in your product journey?");
+      this.showQuickReplies([
+        { text: 'New Product Idea', value: 'new_product' },
+        { text: 'Existing Product', value: 'existing_product' },
+        { text: 'Need Strategy', value: 'strategy' },
+        { text: 'Talk to Expert', value: 'expert' }
+      ]);
+    }, 1000);
+  }
+
+  handleMicrosoft365() {
+    this.conversationState = 'microsoft';
+    this.addBotMessage(
+      "Great! ☁️ Our Microsoft 365 Support includes:\n\n" +
+      "✅ Setup & Configuration\n" +
+      "✅ Migration Services\n" +
+      "✅ Training & Support\n" +
+      "✅ Security Setup\n" +
+      "✅ Ongoing Maintenance\n" +
+      "✅ Troubleshooting\n\n" +
+      "We help teams work efficiently with Microsoft 365!"
+    );
+    
+    setTimeout(() => {
+      this.addBotMessage("What do you need help with?");
+      this.showQuickReplies([
+        { text: 'New Setup', value: 'm365_setup' },
+        { text: 'Migration', value: 'm365_migration' },
+        { text: 'Support', value: 'm365_support' },
+        { text: 'Contact Us', value: 'contact' }
+      ]);
+    }, 1000);
+  }
+
+  handleEcommerce() {
+    this.conversationState = 'ecommerce';
+    this.addBotMessage(
+      "Perfect for online selling! 🛒 Our E-commerce solutions include:\n\n" +
+      "✅ Custom Online Stores\n" +
+      "✅ Payment Gateway Integration\n" +
+      "✅ Inventory Management\n" +
+      "✅ Shopping Cart Development\n" +
+      "✅ Mobile Commerce\n" +
+      "✅ SEO for E-commerce\n\n" +
+      "We build stores that drive sales!"
+    );
+    
+    setTimeout(() => {
+      this.addBotMessage("What platform are you interested in?");
+      this.showQuickReplies([
+        { text: 'Custom Solution', value: 'custom_ecommerce' },
+        { text: 'Shopify', value: 'shopify' },
+        { text: 'WooCommerce', value: 'woocommerce' },
+        { text: 'Not Sure', value: 'ecommerce_help' }
+      ]);
+    }, 1000);
+  }
+
+  handlePWA() {
+    this.conversationState = 'pwa';
+    this.addBotMessage(
+      "Excellent choice! 📱 Progressive Web Apps offer:\n\n" +
+      "✅ App-like Experience\n" +
+      "✅ Works Offline\n" +
+      "✅ Fast Loading\n" +
+      "✅ Push Notifications\n" +
+      "✅ Installable on Devices\n" +
+      "✅ Cross-Platform\n\n" +
+      "PWAs combine the best of web and mobile apps!"
+    );
+    
+    setTimeout(() => {
+      this.addBotMessage("Want to learn more or get started?");
+      this.showQuickReplies([
+        { text: 'Learn More', value: 'pwa_info' },
+        { text: 'Get a Quote', value: 'quote' },
+        { text: 'See Examples', value: 'portfolio' },
+        { text: 'Talk to Expert', value: 'expert' }
+      ]);
+    }, 1000);
+  }
+
+  handleAllServices() {
+    this.addBotMessage(
+      "Here's everything we offer! 🌟\n\n" +
+      "🌐 Web Development\n" +
+      "🎨 Web Design\n" +
+      "📱 Digital Marketing\n" +
+      "🖼️ Graphic Design & Branding\n" +
+      "💼 Product Management\n" +
+      "☁️ Microsoft 365 Support\n" +
+      "🛒 E-commerce Solutions\n" +
+      "📲 Progressive Web Apps\n" +
+      "🔧 Website Maintenance\n\n" +
+      "We serve businesses across East Africa!"
+    );
+    
+    setTimeout(() => {
+      this.addBotMessage("Which service interests you most?");
+      this.showMainMenu();
+    }, 1500);
   }
 
   handlePricingInquiry() {
     this.addBotMessage(
       "Great question! 💰\n\n" +
-      "These services are 100% FREE:\n" +
-      "✅ Email notification setup\n" +
-      "✅ Social media auto-posting\n" +
-      "✅ Market research AI report\n" +
-      "✅ GitHub & technical setup\n\n" +
-      "Why FREE? We believe in supporting East African businesses! 🌍"
+      "Our pricing is customized based on your specific needs. We offer:\n\n" +
+      "✅ Flexible payment plans\n" +
+      "✅ Competitive rates for East Africa\n" +
+      "✅ No hidden fees\n" +
+      "✅ FREE consultation\n" +
+      "✅ Custom quotes within 24 hours\n\n" +
+      "Every project is unique, so let's discuss your requirements!"
     );
     
     setTimeout(() => {
-      this.addBotMessage("Which FREE service interests you?");
-      this.showMainMenu();
+      this.addBotMessage("Would you like to:");
+      this.showQuickReplies([
+        { text: 'Get a Quote', value: 'quote' },
+        { text: 'Schedule Call', value: 'schedule' },
+        { text: 'View Services', value: 'all_services' },
+        { text: 'Contact Us', value: 'contact' }
+      ]);
     }, 1500);
+  }
+
+  handlePortfolio() {
+    this.addBotMessage(
+      "Check out our work! 🎨\n\n" +
+      "We've completed 5,000+ successful campaigns and projects across:\n\n" +
+      "✅ Web Development\n" +
+      "✅ E-commerce Stores\n" +
+      "✅ Branding Projects\n" +
+      "✅ Marketing Campaigns\n" +
+      "✅ Progressive Web Apps\n\n" +
+      "Visit our portfolio page to see case studies and results!"
+    );
+    
+    setTimeout(() => {
+      this.showQuickReplies([
+        { text: '👀 View Portfolio', value: 'view_portfolio' },
+        { text: '📞 Discuss My Project', value: 'contact' },
+        { text: '🔙 Back to Services', value: 'all_services' }
+      ]);
+    }, 1000);
   }
 
   handleContactInquiry() {
     this.addBotMessage(
-      "Happy to connect! 📞\n\n" +
+      "Let's connect! 📞\n\n" +
       "📧 Email: ciphcreativeagency@gmail.com\n" +
       "📱 Phone/WhatsApp: +256 393 24 2000\n" +
-      "🌐 Website: https://ciphca.com\n\n" +
-      "⏰ Hours: Sun-Fri 9AM-6PM, Sat 9AM-4PM\n\n" +
+      "🌐 Website: https://ciphca.com\n" +
+      "📍 Location: Upper Kauga, Mukono, Uganda\n\n" +
+      "⏰ Hours:\n" +
+      "Sun-Fri: 9 AM - 6 PM\n" +
+      "Sat: 9 AM - 4 PM\n\n" +
       "We respond within 2 hours! 🚀"
     );
     
@@ -279,7 +448,8 @@ class CiphChatbot {
       this.showQuickReplies([
         { text: '📧 Send Email', value: 'send_email' },
         { text: '📱 WhatsApp Us', value: 'whatsapp' },
-        { text: '🔙 Back to Services', value: 'main_menu' }
+        { text: '📅 Schedule Meeting', value: 'schedule' },
+        { text: '🔙 Back to Services', value: 'all_services' }
       ]);
     }, 1000);
   }
@@ -287,18 +457,31 @@ class CiphChatbot {
   handleGreeting() {
     this.addBotMessage(
       "Hello! 👋 Welcome to Ciph Creative Agency!\n\n" +
-      "I can help you with our FREE services for East African businesses."
+      "We're a leading digital agency in East Africa (Uganda, Kenya, Tanzania, Rwanda) specializing in:\n\n" +
+      "🌐 Web Development & Design\n" +
+      "📱 Digital Marketing\n" +
+      "🎨 Branding & Graphics\n" +
+      "💼 Product Management\n\n" +
+      "How can we help your business grow?"
     );
     
     setTimeout(() => {
       this.showMainMenu();
-    }, 800);
+    }, 1200);
   }
 
   handleUnknownQuery(message) {
     this.addBotMessage(
-      "I want to make sure I understand correctly! 🤔\n\n" +
-      "I can help you with these FREE services:"
+      "I want to make sure I understand you correctly! 🤔\n\n" +
+      "I can help you with:\n\n" +
+      "🌐 Web Development\n" +
+      "🎨 Web Design\n" +
+      "📱 Digital Marketing\n" +
+      "🖼️ Graphic Design\n" +
+      "💼 Product Management\n" +
+      "☁️ Microsoft 365\n" +
+      "🛒 E-commerce\n\n" +
+      "Which service are you interested in?"
     );
     
     setTimeout(() => {
@@ -308,28 +491,29 @@ class CiphChatbot {
 
   showMainMenu() {
     this.showQuickReplies([
-      { text: '📧 Email Setup', value: 'email' },
-      { text: '📱 Social Media', value: 'social' },
-      { text: '🔍 Market Research', value: 'research' },
-      { text: '💻 GitHub Setup', value: 'github' }
+      { text: '🌐 Web Development', value: 'web_dev' },
+      { text: '🎨 Web Design', value: 'web_design' },
+      { text: '📱 Marketing', value: 'marketing' },
+      { text: '💼 All Services', value: 'all_services' }
     ]);
   }
 
   handleQuickReply(value) {
     // Handle specific quick reply actions
     if (value === 'send_email') {
-      window.location.href = 'mailto:ciphcreativeagency@gmail.com?subject=Inquiry from Website Chatbot';
+      window.location.href = 'mailto:ciphcreativeagency@gmail.com?subject=Inquiry from Website Chatbot&body=Hi, I\'m interested in your services. Please contact me.';
     } else if (value === 'whatsapp') {
-      window.open('https://wa.me/256393242000?text=Hi, I\'m interested in your free services!', '_blank');
-    } else if (value === 'main_menu') {
-      this.showMainMenu();
-    } else if (value === 'human') {
+      window.open('https://wa.me/256393242000?text=Hi, I\'m interested in Ciph Creative Agency services!', '_blank');
+    } else if (value === 'schedule') {
+      window.open('https://calendly.com/ciphcreativeagency/30min', '_blank');
+      this.addBotMessage("Opening our calendar... You can schedule a free 30-minute consultation! 📅");
+    } else if (value === 'quote') {
       this.addBotMessage(
-        "I'll connect you with our team! 🤝\n\n" +
-        "Best ways to reach us:\n" +
+        "Great! To provide an accurate quote, I'll connect you with our team.\n\n" +
+        "Please reach out via:\n" +
         "📱 WhatsApp: +256 393 24 2000\n" +
         "📧 Email: ciphcreativeagency@gmail.com\n\n" +
-        "We'll respond within 2 hours!"
+        "We'll respond with a custom quote within 24 hours!"
       );
       setTimeout(() => {
         this.showQuickReplies([
@@ -337,20 +521,39 @@ class CiphChatbot {
           { text: '📧 Send Email', value: 'send_email' }
         ]);
       }, 1000);
-    } else if (value === 'business_info' || value === 'all_email' || value === 'all_social') {
+    } else if (value === 'consultation') {
       this.addBotMessage(
-        "Perfect! Let's get you set up! 🚀\n\n" +
-        "To proceed, please contact us:\n" +
-        "📱 WhatsApp: +256 393 24 2000\n" +
-        "📧 Email: ciphcreativeagency@gmail.com\n\n" +
-        "We'll start your FREE setup within 24 hours!"
+        "Perfect! Let's schedule your FREE consultation! 🎯\n\n" +
+        "During the call, we'll:\n" +
+        "✅ Discuss your goals\n" +
+        "✅ Review your current situation\n" +
+        "✅ Recommend solutions\n" +
+        "✅ Answer all your questions\n\n" +
+        "Book your slot now!"
       );
       setTimeout(() => {
         this.showQuickReplies([
-          { text: '📱 WhatsApp Us', value: 'whatsapp' },
-          { text: '📧 Send Email', value: 'send_email' }
+          { text: '📅 Schedule Now', value: 'schedule' },
+          { text: '📱 WhatsApp Instead', value: 'whatsapp' }
         ]);
       }, 1000);
+    } else if (value === 'portfolio' || value === 'view_portfolio') {
+      window.open('https://ciphca.com/portfolio-details.html', '_blank');
+      this.addBotMessage("Opening our portfolio in a new tab... Check out our work! 🎨");
+    } else if (value === 'expert' || value === 'get_started') {
+      this.addBotMessage(
+        "Let's get you started! 🚀\n\n" +
+        "Our team is ready to help. Choose your preferred contact method:"
+      );
+      setTimeout(() => {
+        this.showQuickReplies([
+          { text: '📱 WhatsApp Chat', value: 'whatsapp' },
+          { text: '📧 Email Us', value: 'send_email' },
+          { text: '📅 Schedule Call', value: 'schedule' }
+        ]);
+      }, 800);
+    } else if (value === 'all_services' || value === 'main_menu') {
+      this.handleAllServices();
     } else {
       // Route back to main handlers
       this.processMessage(value);
