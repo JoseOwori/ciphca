@@ -160,6 +160,8 @@ class CiphChatbot {
         this.handlePWA();
       } else if (lowerMessage.includes('all services') || lowerMessage.includes('services') || lowerMessage.includes('what do you')) {
         this.handleAllServices();
+      } else if (lowerMessage.includes('more services')) {
+        this.handleMoreServices();
       } else if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('quote') || lowerMessage.includes('budget')) {
         this.handlePricingInquiry();
       } else if (lowerMessage.includes('contact') || lowerMessage.includes('call') || lowerMessage.includes('phone') || lowerMessage.includes('email')) {
@@ -168,6 +170,8 @@ class CiphChatbot {
         this.handlePortfolio();
       } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
         this.handleGreeting();
+      } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks') || lowerMessage.includes('bye') || lowerMessage.includes('goodbye')) {
+        this.closeConversation();
       } else {
         this.handleUnknownQuery(message);
       }
@@ -193,7 +197,8 @@ class CiphChatbot {
         { text: 'Custom Website', value: 'custom_website' },
         { text: 'E-commerce Store', value: 'ecommerce' },
         { text: 'Progressive Web App', value: 'pwa' },
-        { text: 'Get a Quote', value: 'quote' }
+        { text: 'Get a Quote', value: 'quote' },
+        { text: '❌ Close', value: 'close' }
       ]);
     }, 1000);
   }
@@ -217,7 +222,8 @@ class CiphChatbot {
         { text: 'New Website Design', value: 'new_design' },
         { text: 'Redesign Existing Site', value: 'redesign' },
         { text: 'Landing Page', value: 'landing' },
-        { text: 'View Portfolio', value: 'portfolio' }
+        { text: 'View Portfolio', value: 'portfolio' },
+        { text: '❌ Close', value: 'close' }
       ]);
     }, 1000);
   }
@@ -241,7 +247,8 @@ class CiphChatbot {
         { text: 'SEO Services', value: 'seo' },
         { text: 'Social Media', value: 'social_media' },
         { text: 'Full Marketing', value: 'full_marketing' },
-        { text: 'Free Consultation', value: 'consultation' }
+        { text: 'Free Consultation', value: 'consultation' },
+        { text: '❌ Close', value: 'close' }
       ]);
     }, 1000);
   }
@@ -265,7 +272,8 @@ class CiphChatbot {
         { text: 'Logo & Branding', value: 'branding' },
         { text: 'Marketing Materials', value: 'marketing_materials' },
         { text: 'Social Graphics', value: 'social_graphics' },
-        { text: 'Get Started', value: 'get_started' }
+        { text: 'Get Started', value: 'get_started' },
+        { text: '❌ Close', value: 'close' }
       ]);
     }, 1000);
   }
@@ -289,7 +297,8 @@ class CiphChatbot {
         { text: 'New Product Idea', value: 'new_product' },
         { text: 'Existing Product', value: 'existing_product' },
         { text: 'Need Strategy', value: 'strategy' },
-        { text: 'Talk to Expert', value: 'expert' }
+        { text: 'Talk to Expert', value: 'expert' },
+        { text: '❌ Close', value: 'close' }
       ]);
     }, 1000);
   }
@@ -313,7 +322,8 @@ class CiphChatbot {
         { text: 'New Setup', value: 'm365_setup' },
         { text: 'Migration', value: 'm365_migration' },
         { text: 'Support', value: 'm365_support' },
-        { text: 'Contact Us', value: 'contact' }
+        { text: 'Contact Us', value: 'contact' },
+        { text: '❌ Close', value: 'close' }
       ]);
     }, 1000);
   }
@@ -337,7 +347,8 @@ class CiphChatbot {
         { text: 'Custom Solution', value: 'custom_ecommerce' },
         { text: 'Shopify', value: 'shopify' },
         { text: 'WooCommerce', value: 'woocommerce' },
-        { text: 'Not Sure', value: 'ecommerce_help' }
+        { text: 'Not Sure', value: 'ecommerce_help' },
+        { text: '❌ Close', value: 'close' }
       ]);
     }, 1000);
   }
@@ -361,7 +372,8 @@ class CiphChatbot {
         { text: 'Learn More', value: 'pwa_info' },
         { text: 'Get a Quote', value: 'quote' },
         { text: 'See Examples', value: 'portfolio' },
-        { text: 'Talk to Expert', value: 'expert' }
+        { text: 'Talk to Expert', value: 'expert' },
+        { text: '❌ Close', value: 'close' }
       ]);
     }, 1000);
   }
@@ -383,7 +395,13 @@ class CiphChatbot {
     
     setTimeout(() => {
       this.addBotMessage("Which service interests you most?");
-      this.showMainMenu();
+      this.showQuickReplies([
+        { text: '🌐 Web Development', value: 'web_dev' },
+        { text: '🎨 Web Design', value: 'web_design' },
+        { text: '📱 Marketing', value: 'marketing' },
+        { text: '💼 More Services', value: 'more_services' },
+        { text: '❌ Close', value: 'close' }
+      ]);
     }, 1500);
   }
 
@@ -449,7 +467,7 @@ class CiphChatbot {
         { text: '📧 Send Email', value: 'send_email' },
         { text: '📱 WhatsApp Us', value: 'whatsapp' },
         { text: '📅 Schedule Meeting', value: 'schedule' },
-        { text: '🔙 Back to Services', value: 'all_services' }
+        { text: '❌ Close Chat', value: 'close' }
       ]);
     }, 1000);
   }
@@ -498,15 +516,58 @@ class CiphChatbot {
     ]);
   }
 
+  handleMoreServices() {
+    this.addBotMessage(
+      "Here are more services we offer! 🎯\n\n" +
+      "🖼️ Graphic Design & Branding\n" +
+      "💼 Product Management\n" +
+      "☁️ Microsoft 365 Support\n" +
+      "🛒 E-commerce Solutions\n" +
+      "📲 Progressive Web Apps\n" +
+      "🔧 Website Maintenance\n\n" +
+      "Which one interests you?"
+    );
+    
+    setTimeout(() => {
+      this.showQuickReplies([
+        { text: '🖼️ Graphic Design', value: 'graphic' },
+        { text: '💼 Product Mgmt', value: 'product' },
+        { text: '☁️ Microsoft 365', value: 'microsoft' },
+        { text: '🛒 E-commerce', value: 'ecommerce' },
+        { text: '❌ Close', value: 'close' }
+      ]);
+    }, 1000);
+  }
+
   handleQuickReply(value) {
     // Handle specific quick reply actions
     if (value === 'send_email') {
       window.location.href = 'mailto:ciphcreativeagency@gmail.com?subject=Inquiry from Website Chatbot&body=Hi, I\'m interested in your services. Please contact me.';
+      this.addBotMessage(
+        "Opening your email client... 📧\n\n" +
+        "We'll respond within 2 hours during business hours!"
+      );
+      setTimeout(() => {
+        this.closeConversation();
+      }, 2000);
     } else if (value === 'whatsapp') {
       window.open('https://wa.me/256393242000?text=Hi, I\'m interested in Ciph Creative Agency services!', '_blank');
+      this.addBotMessage(
+        "Opening WhatsApp... 💬\n\n" +
+        "Our team will respond to you shortly!"
+      );
+      setTimeout(() => {
+        this.closeConversation();
+      }, 2000);
     } else if (value === 'schedule') {
       window.open('https://calendly.com/ciphcreativeagency/30min', '_blank');
-      this.addBotMessage("Opening our calendar... You can schedule a free 30-minute consultation! 📅");
+      this.addBotMessage(
+        "Opening our calendar... 📅\n\n" +
+        "Pick a time that works best for you!"
+      );
+      setTimeout(() => {
+        this.closeConversation();
+      }, 2000);
     } else if (value === 'quote') {
       this.addBotMessage(
         "Great! To provide an accurate quote, I'll connect you with our team.\n\n" +
@@ -518,7 +579,8 @@ class CiphChatbot {
       setTimeout(() => {
         this.showQuickReplies([
           { text: '📱 WhatsApp Now', value: 'whatsapp' },
-          { text: '📧 Send Email', value: 'send_email' }
+          { text: '📧 Send Email', value: 'send_email' },
+          { text: '❌ Close Chat', value: 'close' }
         ]);
       }, 1000);
     } else if (value === 'consultation') {
@@ -534,12 +596,24 @@ class CiphChatbot {
       setTimeout(() => {
         this.showQuickReplies([
           { text: '📅 Schedule Now', value: 'schedule' },
-          { text: '📱 WhatsApp Instead', value: 'whatsapp' }
+          { text: '📱 WhatsApp Instead', value: 'whatsapp' },
+          { text: '❌ Close Chat', value: 'close' }
         ]);
       }, 1000);
     } else if (value === 'portfolio' || value === 'view_portfolio') {
       window.open('https://ciphca.com/portfolio-details.html', '_blank');
-      this.addBotMessage("Opening our portfolio in a new tab... Check out our work! 🎨");
+      this.addBotMessage(
+        "Opening our portfolio in a new tab... 🎨\n\n" +
+        "Check out our work and see what we can do for you!"
+      );
+      setTimeout(() => {
+        this.addBotMessage("Did you find what you were looking for?");
+        this.showQuickReplies([
+          { text: '✅ Yes, Contact Me', value: 'contact' },
+          { text: '🔙 See More Services', value: 'all_services' },
+          { text: '❌ Close Chat', value: 'close' }
+        ]);
+      }, 2000);
     } else if (value === 'expert' || value === 'get_started') {
       this.addBotMessage(
         "Let's get you started! 🚀\n\n" +
@@ -554,10 +628,57 @@ class CiphChatbot {
       }, 800);
     } else if (value === 'all_services' || value === 'main_menu') {
       this.handleAllServices();
+    } else if (value === 'contact') {
+      this.handleContactInquiry();
+    } else if (value === 'close') {
+      this.closeConversation();
+    } else if (value === 'restart') {
+      this.restartConversation();
     } else {
       // Route back to main handlers
       this.processMessage(value);
     }
+  }
+
+  closeConversation() {
+    this.addBotMessage(
+      "Thank you for chatting with us! 🙏\n\n" +
+      "We're excited to help your business grow!\n\n" +
+      "If you have any more questions, feel free to:\n" +
+      "📧 Email: ciphcreativeagency@gmail.com\n" +
+      "📱 Call/WhatsApp: +256 393 24 2000\n\n" +
+      "Have a wonderful day! ✨"
+    );
+    
+    setTimeout(() => {
+      this.showQuickReplies([
+        { text: '🔄 Start New Chat', value: 'restart' },
+        { text: '📱 Contact Us', value: 'contact' }
+      ]);
+    }, 1500);
+  }
+
+  restartConversation() {
+    this.conversationState = 'initial';
+    this.userContext = {};
+    
+    // Clear messages except system messages
+    const messagesContainer = document.getElementById('chatbot-messages');
+    messagesContainer.innerHTML = '';
+    
+    // Clear quick replies
+    const quickReplies = document.getElementById('quick-replies');
+    quickReplies.innerHTML = '';
+    
+    // Show welcome message again
+    this.addBotMessage(
+      "Welcome back! 👋\n\n" +
+      "How can I help you today?"
+    );
+    
+    setTimeout(() => {
+      this.showMainMenu();
+    }, 800);
   }
 
   addUserMessage(message) {
