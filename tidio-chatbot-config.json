@@ -1,0 +1,36 @@
+{
+  "chatbot_name": "Ciph Assistant",
+  "welcome_message": "Hi there! 👋 I'm here to help you with FREE services from Ciph Creative Agency!\n\nI can help with:\n1️⃣ Email Notification Setup\n2️⃣ Social Media Auto-Posting\n3️⃣ Market Research AI\n4️⃣ Advanced Technical Setup\n\nWhat interests you?",
+  "triggers": [
+    {
+      "id": "email_trigger",
+      "keywords": ["email", "notification", "alert", "contact form"],
+      "response": "email_notification_flow"
+    },
+    {
+      "id": "social_trigger",
+      "keywords": ["social media", "facebook", "instagram", "auto post", "schedule"],
+      "response": "social_media_flow"
+    },
+    {
+      "id": "research_trigger",
+      "keywords": ["market research", "competitor", "analysis", "insights"],
+      "response": "market_research_flow"
+    },
+    {
+      "id": "github_trigger",
+      "keywords": ["github", "technical", "deployment", "ci/cd", "cloud"],
+      "response": "technical_setup_flow"
+    }
+  ],
+  "flows": {
+    "email_notification_flow": {
+      "steps": [
+        {
+          "message": "Great! I can help with FREE email notifications! ✅\n\nWhat type do you need?\n1. Contact form alerts\n2. Order notifications\n3. Customer emails\n4. All of the above",
+          "buttons": ["Contact Forms", "Orders", "Customer Emails", "All"]
+        }
+      ]
+    }
+  }
+}
