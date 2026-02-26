@@ -6,7 +6,7 @@
 * License: https://bootstrapmade.com/license/
 */
 
-(function() {
+(function () {
   "use strict";
 
   /**
@@ -52,7 +52,7 @@
    * Toggle mobile nav dropdowns
    */
   document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
+    navmenu.addEventListener('click', function (e) {
       e.preventDefault();
       this.parentNode.classList.toggle('active');
       this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
@@ -108,7 +108,7 @@
    * Init swiper sliders
    */
   function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
+    document.querySelectorAll(".init-swiper").forEach(function (swiperElement) {
       let config = JSON.parse(
         swiperElement.querySelector(".swiper-config").innerHTML.trim()
       );
@@ -133,13 +133,13 @@
   /**
    * Init isotope layout and filters
    */
-  document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
+  document.querySelectorAll('.isotope-layout').forEach(function (isotopeItem) {
     let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
     let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
     let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
 
     let initIsotope;
-    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
+    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function () {
       initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
         itemSelector: '.isotope-item',
         layoutMode: layout,
@@ -148,8 +148,8 @@
       });
     });
 
-    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
-      filters.addEventListener('click', function() {
+    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function (filters) {
+      filters.addEventListener('click', function () {
         isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
         this.classList.add('filter-active');
         initIsotope.arrange({
@@ -174,20 +174,56 @@
 
   /**
    * Correct scrolling position upon page load for URLs containing hash links.
+   * Also cleans the URL by removing the hash fragment.
    */
-  window.addEventListener('load', function(e) {
+  window.addEventListener('load', function (e) {
     if (window.location.hash) {
-      if (document.querySelector(window.location.hash)) {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
         setTimeout(() => {
-          let section = document.querySelector(window.location.hash);
-          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
+          let scrollMarginTop = getComputedStyle(target).scrollMarginTop;
           window.scrollTo({
-            top: section.offsetTop - parseInt(scrollMarginTop),
+            top: target.offsetTop - parseInt(scrollMarginTop || 0),
             behavior: 'smooth'
           });
+          // Clean URL by removing the hash
+          window.history.replaceState(null, null, window.location.pathname);
         }, 100);
       }
     }
+  });
+
+  /**
+   * Handle smooth scrolling for navigation links and keep URL clean
+   */
+  document.querySelectorAll('#navmenu a').forEach(navlink => {
+    navlink.addEventListener('click', function (e) {
+      if (!this.hash) return;
+
+      const target = document.querySelector(this.hash);
+      if (target) {
+        // If it's a same-page link (or handled as such)
+        const isSamePage = this.pathname === window.location.pathname ||
+          (this.pathname.endsWith('/') && window.location.pathname.endsWith('index.html')) ||
+          window.location.pathname.endsWith(this.pathname);
+
+        if (isSamePage) {
+          e.preventDefault();
+          let scrollMarginTop = getComputedStyle(target).scrollMarginTop;
+          window.scrollTo({
+            top: target.offsetTop - parseInt(scrollMarginTop || 0),
+            behavior: 'smooth'
+          });
+
+          // Clean URL immediately after click
+          window.history.replaceState(null, null, window.location.pathname);
+
+          if (document.querySelector('.mobile-nav-active')) {
+            mobileNavToogle();
+          }
+        }
+      }
+    });
   });
 
   /**
@@ -215,7 +251,7 @@
   /**
    * Theme toggle (light / dark) with persistence and accessibility
    */
-  (function() {
+  (function () {
     const toggles = document.querySelectorAll('#theme-toggle');
     const root = document.documentElement;
     const storageKey = 'theme';
@@ -258,21 +294,21 @@
       const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       try {
         localStorage.setItem(storageKey, current);
-      } catch (e) {}
+      } catch (e) { }
       applyTheme(current);
       try {
         if (window.AOS && typeof AOS.refresh === 'function') {
           AOS.refresh();
         }
-      } catch (e) {}
+      } catch (e) { }
     }
 
     toggles.forEach(toggle => {
       // Click handler
       toggle.addEventListener('click', toggleTheme);
-      
+
       // Keyboard support: Space and Enter
-      toggle.addEventListener('keydown', function(e) {
+      toggle.addEventListener('keydown', function (e) {
         if (e.code === 'Space' || e.code === 'Enter') {
           e.preventDefault();
           toggleTheme();
@@ -282,10 +318,10 @@
   })();
 
   // Set loading="lazy" on images that don't specify loading (progressive enhancement)
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     try {
       document.querySelectorAll('img[src^="assets/img"]:not([loading])').forEach(img => img.setAttribute('loading', 'lazy'));
-    } catch (e) {}
+    } catch (e) { }
   });
 
 })();
