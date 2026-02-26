@@ -743,7 +743,7 @@ h6 {
   position: fixed;
   visibility: hidden;
   opacity: 0;
-  right: 15px;
+  right: 20px;
   bottom: -15px;
   z-index: 99999;
   background-color: var(--accent-color);
@@ -751,6 +751,7 @@ h6 {
   height: 44px;
   border-radius: 50px;
   transition: all 0.4s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .scroll-top i {
@@ -762,12 +763,13 @@ h6 {
 .scroll-top:hover {
   background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
   color: var(--contrast-color);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .scroll-top.active {
   visibility: visible;
   opacity: 1;
-  bottom: 15px;
+  bottom: 110px;
 }
 
 /*--------------------------------------------------------------
