@@ -392,6 +392,25 @@ h6 {
     color: var(--nav-hover-color);
   }
 
+  .navmenu .active {
+    position: relative;
+  }
+
+  .navmenu .active::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    left: 15px;
+    right: 15px;
+    height: 4px;
+    /* Thicker "stroke" */
+    background: var(--nav-hover-color);
+    border-radius: 50px;
+    /* Rounded ends */
+    transition: 0.3s;
+    opacity: 0.8;
+  }
+
   .navmenu .dropdown ul {
     margin: 0;
     padding: 10px 0;
@@ -520,6 +539,24 @@ h6 {
   .navmenu .active,
   .navmenu .active:focus {
     color: var(--nav-dropdown-hover-color);
+  }
+
+  .navmenu .active {
+    position: relative;
+  }
+
+  .navmenu .active::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 20px;
+    width: 40px;
+    /* Wider stroke on mobile */
+    height: 4px;
+    background: var(--nav-dropdown-hover-color);
+    border-radius: 50px;
+    transition: 0.3s;
+    opacity: 0.8;
   }
 
   .navmenu .active i,

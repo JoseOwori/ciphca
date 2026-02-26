@@ -173,10 +173,29 @@
   });
 
   /**
-   * Correct scrolling position upon page load for URLs containing hash links.
-   * Also cleans the URL by removing the hash fragment.
+   * Section path management (History API)
+   * This allows URLs like ciphca.com/services instead of #services
+   */
+  function updateSectionPath(sectionId, updateHistory = true) {
+    const cleanId = sectionId.replace('#', '');
+    const path = (cleanId === 'hero' || cleanId === 'top' || cleanId === '') ? window.location.pathname.replace(/\/$/, '') : cleanId;
+
+    // Ensure we don't duplicate the current path in history
+    const currentPath = window.location.pathname.split('/').pop() || '';
+    if (currentPath === path) return;
+
+    if (updateHistory) {
+      window.history.pushState({ sectionId: cleanId }, null, path);
+    } else {
+      window.history.replaceState({ sectionId: cleanId }, null, path);
+    }
+  }
+
+  /**
+   * Correct scrolling position upon page load or path-based entry.
    */
   window.addEventListener('load', function (e) {
+    // Handle hash entry first for legacy/compatibility
     if (window.location.hash) {
       const target = document.querySelector(window.location.hash);
       if (target) {
@@ -186,48 +205,65 @@
             top: target.offsetTop - parseInt(scrollMarginTop || 0),
             behavior: 'smooth'
           });
-          // Clean URL by removing the hash completely
-          const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search;
-          window.history.replaceState(null, null, cleanUrl);
+          updateSectionPath(window.location.hash, false);
+        }, 100);
+        return;
+      }
+    }
+
+    // Handle path-based entry (e.g., /services)
+    const currentPath = window.location.pathname.split('/').pop();
+    if (currentPath && currentPath !== 'index.html') {
+      const target = document.getElementById(currentPath);
+      if (target) {
+        setTimeout(() => {
+          let scrollMarginTop = getComputedStyle(target).scrollMarginTop;
+          window.scrollTo({
+            top: target.offsetTop - parseInt(scrollMarginTop || 0),
+            behavior: 'smooth'
+          });
         }, 100);
       }
     }
   });
 
   /**
-   * Handle smooth scrolling for navigation links and keep URL clean
+   * Handle smooth scrolling for navigation links and path-based URLs
    */
   document.querySelectorAll('a[href^="#"], #navmenu a').forEach(navlink => {
     navlink.addEventListener('click', function (e) {
-      const hash = this.hash || (this.getAttribute('href') === '#' ? '#top' : null);
-      if (!hash) return;
+      const href = this.getAttribute('href');
+      const hash = this.hash || (href === '#' ? '#top' : null);
+      const isHomeLink = href === 'index.html' || (this.pathname && this.pathname.endsWith('index.html') && !this.hash);
 
-      if (hash === '#top') {
+      if (isHomeLink && (window.location.pathname === '/' || window.location.pathname.endsWith('index.html'))) {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search;
-        window.history.replaceState(null, null, cleanUrl);
+        updateSectionPath('hero');
         return;
       }
 
+      if (!hash) return;
+
       const target = document.querySelector(hash);
       if (target) {
-        // Same-page logic
         const isSamePage = !this.pathname || this.pathname === window.location.pathname ||
           (this.pathname.endsWith('/') && window.location.pathname.endsWith('index.html')) ||
           window.location.pathname.endsWith(this.pathname);
 
         if (isSamePage) {
           e.preventDefault();
+
+          document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
+          this.classList.add('active');
+
           let scrollMarginTop = getComputedStyle(target).scrollMarginTop;
           window.scrollTo({
             top: target.offsetTop - parseInt(scrollMarginTop || 0),
             behavior: 'smooth'
           });
 
-          // Clean URL completely after click
-          const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search;
-          window.history.replaceState(null, null, cleanUrl);
+          updateSectionPath(hash);
 
           if (document.querySelector('.mobile-nav-active')) {
             mobileNavToogle();
@@ -238,23 +274,57 @@
   });
 
   /**
+   * Handle browser back/forward buttons
+   */
+  window.addEventListener('popstate', function (e) {
+    const sectionId = e.state ? e.state.sectionId : null;
+    if (sectionId) {
+      const target = document.getElementById(sectionId);
+      if (target) {
+        let scrollMarginTop = getComputedStyle(target).scrollMarginTop;
+        window.scrollTo({
+          top: target.offsetTop - parseInt(scrollMarginTop || 0),
+          behavior: 'smooth'
+        });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  /**
    * Navmenu Scrollspy
    */
   let navmenulinks = document.querySelectorAll('.navmenu a');
 
   function navmenuScrollspy() {
+    let position = window.scrollY + 200;
+    let foundSection = null;
+
     navmenulinks.forEach(navmenulink => {
       if (!navmenulink.hash) return;
       let section = document.querySelector(navmenulink.hash);
       if (!section) return;
-      let position = window.scrollY + 200;
+
       if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
         document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
         navmenulink.classList.add('active');
-      } else {
-        navmenulink.classList.remove('active');
+        foundSection = navmenulink.hash;
       }
-    })
+    });
+
+    if (foundSection) {
+      updateSectionPath(foundSection, false);
+    } else if (window.scrollY < 200) {
+      const homeLink = Array.from(navmenulinks).find(link =>
+        link.getAttribute('href') === 'index.html' || link.getAttribute('href') === '#' || link.textContent.toLowerCase() === 'home'
+      );
+      if (homeLink) {
+        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
+        homeLink.classList.add('active');
+        updateSectionPath('hero', false);
+      }
+    }
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
