@@ -20,12 +20,12 @@ class CiphChatbot {
   createChatbotHTML() {
     const chatbotHTML = `
       <div id="ciph-chatbot" class="ciph-chatbot">
-        <div class="chatbot-toggle" id="chatbot-toggle">
+        <div class="chatbot-toggle" id="chatbot-toggle" aria-label="Open Ciph Assistant Chatbot" aria-expanded="false" role="button" tabindex="0">
           <i class="bi bi-chat-dots"></i>
           <span class="notification-badge">1</span>
         </div>
         
-        <div class="chatbot-window" id="chatbot-window">
+        <div class="chatbot-window" id="chatbot-window" aria-hidden="true" role="dialog" aria-label="Chatbot Window">
           <div class="chatbot-header">
             <div class="header-content">
               <div class="avatar">
@@ -63,7 +63,7 @@ class CiphChatbot {
         </div>
       </div>
     `;
-    
+
     document.body.insertAdjacentHTML('beforeend', chatbotHTML);
   }
 
@@ -74,9 +74,16 @@ class CiphChatbot {
     const input = document.getElementById('chatbot-input-field');
 
     toggle.addEventListener('click', () => this.toggleChatbot());
+    toggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.toggleChatbot();
+      }
+    });
+
     close.addEventListener('click', () => this.toggleChatbot());
     sendBtn.addEventListener('click', () => this.handleUserMessage());
-    
+
     input.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
         this.handleUserMessage();
@@ -89,15 +96,19 @@ class CiphChatbot {
     const window = document.getElementById('chatbot-window');
     const toggle = document.getElementById('chatbot-toggle');
     const badge = toggle.querySelector('.notification-badge');
-    
+
     if (this.isOpen) {
       window.classList.add('active');
       toggle.classList.add('active');
+      window.setAttribute('aria-hidden', 'false');
+      toggle.setAttribute('aria-expanded', 'true');
       if (badge) badge.style.display = 'none';
-      document.getElementById('chatbot-input-field').focus();
+      setTimeout(() => document.getElementById('chatbot-input-field').focus(), 400);
     } else {
       window.classList.remove('active');
       toggle.classList.remove('active');
+      window.setAttribute('aria-hidden', 'true');
+      toggle.setAttribute('aria-expanded', 'false');
     }
   }
 
@@ -108,7 +119,7 @@ class CiphChatbot {
         "What brings you here today?",
         false
       );
-      
+
       setTimeout(() => {
         this.showQuickReplies([
           { text: 'Build a Website', value: 'web_dev' },
@@ -123,24 +134,24 @@ class CiphChatbot {
   handleUserMessage() {
     const input = document.getElementById('chatbot-input-field');
     const message = input.value.trim();
-    
+
     if (!message) return;
-    
+
     this.addUserMessage(message);
     input.value = '';
-    
+
     this.processMessage(message);
   }
 
   processMessage(message) {
     const lowerMessage = message.toLowerCase();
-    
+
     // Show typing indicator
     this.showTypingIndicator();
-    
+
     setTimeout(() => {
       this.hideTypingIndicator();
-      
+
       // Route to appropriate response
       if (lowerMessage.includes('web dev') || lowerMessage.includes('development') || lowerMessage.includes('software') || lowerMessage.includes('backend') || lowerMessage.includes('frontend')) {
         this.handleWebDevelopment();
@@ -184,7 +195,7 @@ class CiphChatbot {
       "Great! I can help you build a website. 💻\n\n" +
       "What type of website do you need?"
     );
-    
+
     setTimeout(() => {
       this.showQuickReplies([
         { text: 'Business Website', value: 'business_website' },
@@ -201,7 +212,7 @@ class CiphChatbot {
       "Perfect! Let's improve your design. 🎨\n\n" +
       "What do you need help with?"
     );
-    
+
     setTimeout(() => {
       this.showQuickReplies([
         { text: 'New Design', value: 'new_design' },
@@ -218,7 +229,7 @@ class CiphChatbot {
       "Excellent! Let's grow your business. 📈\n\n" +
       "What's your main goal?"
     );
-    
+
     setTimeout(() => {
       this.showQuickReplies([
         { text: 'Get More Customers', value: 'get_customers' },
@@ -241,7 +252,7 @@ class CiphChatbot {
       "✅ Print Design\n\n" +
       "We create visuals that make your brand memorable!"
     );
-    
+
     setTimeout(() => {
       this.addBotMessage("What do you need designed?");
       this.showQuickReplies([
@@ -266,7 +277,7 @@ class CiphChatbot {
       "✅ Drive Growth\n\n" +
       "We turn ideas into successful products!"
     );
-    
+
     setTimeout(() => {
       this.addBotMessage("Where are you in your product journey?");
       this.showQuickReplies([
@@ -291,7 +302,7 @@ class CiphChatbot {
       "✅ Troubleshooting\n\n" +
       "We help teams work efficiently with Microsoft 365!"
     );
-    
+
     setTimeout(() => {
       this.addBotMessage("What do you need help with?");
       this.showQuickReplies([
@@ -316,7 +327,7 @@ class CiphChatbot {
       "✅ SEO for E-commerce\n\n" +
       "We build stores that drive sales!"
     );
-    
+
     setTimeout(() => {
       this.addBotMessage("What platform are you interested in?");
       this.showQuickReplies([
@@ -341,7 +352,7 @@ class CiphChatbot {
       "✅ Cross-Platform\n\n" +
       "PWAs combine the best of web and mobile apps!"
     );
-    
+
     setTimeout(() => {
       this.addBotMessage("Want to learn more or get started?");
       this.showQuickReplies([
@@ -355,25 +366,25 @@ class CiphChatbot {
   }
 
   handleAllServices() {
-      this.addBotMessage(
-        "Here's what we do best! 🌟\n\n" +
-        "🌐 Website Development\n" +
-        "🎨 Design & Branding\n" +
-        "📱 Digital Marketing\n" +
-        "🛒 E-commerce Stores\n" +
-        "☁️ Microsoft 365 Support\n\n" +
-        "What interests you?"
-      );
+    this.addBotMessage(
+      "Here's what we do best! 🌟\n\n" +
+      "🌐 Website Development\n" +
+      "🎨 Design & Branding\n" +
+      "📱 Digital Marketing\n" +
+      "🛒 E-commerce Stores\n" +
+      "☁️ Microsoft 365 Support\n\n" +
+      "What interests you?"
+    );
 
-      setTimeout(() => {
-        this.showQuickReplies([
-          { text: 'Build Website', value: 'web_dev' },
-          { text: 'Design Help', value: 'web_design' },
-          { text: 'Marketing', value: 'marketing' },
-          { text: 'Talk to Us', value: 'consultation' }
-        ]);
-      }, 1000);
-    }
+    setTimeout(() => {
+      this.showQuickReplies([
+        { text: 'Build Website', value: 'web_dev' },
+        { text: 'Design Help', value: 'web_design' },
+        { text: 'Marketing', value: 'marketing' },
+        { text: 'Talk to Us', value: 'consultation' }
+      ]);
+    }, 1000);
+  }
 
 
   handlePricingInquiry() {
@@ -387,7 +398,7 @@ class CiphChatbot {
       "✅ Custom quotes within 24 hours\n\n" +
       "Every project is unique, so let's discuss your requirements!"
     );
-    
+
     setTimeout(() => {
       this.addBotMessage("Would you like to:");
       this.showQuickReplies([
@@ -410,7 +421,7 @@ class CiphChatbot {
       "✅ Progressive Web Apps\n\n" +
       "Visit our portfolio page to see case studies and results!"
     );
-    
+
     setTimeout(() => {
       this.showQuickReplies([
         { text: '👀 View Portfolio', value: 'view_portfolio' },
@@ -432,7 +443,7 @@ class CiphChatbot {
       "Sat: 9 AM - 4 PM\n\n" +
       "We respond within 2 hours! 🚀"
     );
-    
+
     setTimeout(() => {
       this.showQuickReplies([
         { text: '📧 Send Email', value: 'send_email' },
@@ -453,7 +464,7 @@ class CiphChatbot {
       "💼 Product Management\n\n" +
       "How can we help your business grow?"
     );
-    
+
     setTimeout(() => {
       this.showMainMenu();
     }, 1200);
@@ -472,7 +483,7 @@ class CiphChatbot {
       "🛒 E-commerce\n\n" +
       "Which service are you interested in?"
     );
-    
+
     setTimeout(() => {
       this.showMainMenu();
     }, 800);
@@ -498,7 +509,7 @@ class CiphChatbot {
       "🔧 Website Maintenance\n\n" +
       "Which one interests you?"
     );
-    
+
     setTimeout(() => {
       this.showQuickReplies([
         { text: '🖼️ Graphic Design', value: 'graphic' },
@@ -539,9 +550,9 @@ class CiphChatbot {
       setTimeout(() => {
         this.closeConversation();
       }, 2000);
-    } else if (value === 'business_website' || value === 'custom_solution' || value === 'new_design' || 
-               value === 'redesign' || value === 'branding' || value === 'get_customers' || 
-               value === 'seo' || value === 'social_media' || value === 'full_marketing') {
+    } else if (value === 'business_website' || value === 'custom_solution' || value === 'new_design' ||
+      value === 'redesign' || value === 'branding' || value === 'get_customers' ||
+      value === 'seo' || value === 'social_media' || value === 'full_marketing') {
       // All specific service requests lead to contact
       this.addBotMessage(
         "Perfect! Let's discuss your project. 🚀\n\n" +
@@ -631,7 +642,7 @@ class CiphChatbot {
       "📱 Call/WhatsApp: +256 393 24 2000\n\n" +
       "Have a wonderful day! ✨"
     );
-    
+
     setTimeout(() => {
       this.showQuickReplies([
         { text: '🔄 Start New Chat', value: 'restart' },
@@ -643,21 +654,21 @@ class CiphChatbot {
   restartConversation() {
     this.conversationState = 'initial';
     this.userContext = {};
-    
+
     // Clear messages except system messages
     const messagesContainer = document.getElementById('chatbot-messages');
     messagesContainer.innerHTML = '';
-    
+
     // Clear quick replies
     const quickReplies = document.getElementById('quick-replies');
     quickReplies.innerHTML = '';
-    
+
     // Show welcome message again
     this.addBotMessage(
       "Welcome back! 👋\n\n" +
       "How can I help you today?"
     );
-    
+
     setTimeout(() => {
       this.showMainMenu();
     }, 800);
@@ -685,6 +696,14 @@ class CiphChatbot {
     `;
     messagesContainer.insertAdjacentHTML('beforeend', messageHTML);
     this.scrollToBottom();
+
+    // Subtle bounce animation for toggle if received while closed
+    if (!this.isOpen) {
+      const toggle = document.getElementById('chatbot-toggle');
+      toggle.style.animation = 'none';
+      toggle.offsetHeight; // trigger reflow
+      toggle.style.animation = 'pulse 1s 2';
+    }
   }
 
   showTypingIndicator() {
@@ -713,7 +732,7 @@ class CiphChatbot {
   showQuickReplies(replies) {
     const container = document.getElementById('quick-replies');
     container.innerHTML = '';
-    
+
     replies.forEach(reply => {
       const button = document.createElement('button');
       button.className = 'quick-reply-btn';
