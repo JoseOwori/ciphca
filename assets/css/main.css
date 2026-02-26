@@ -827,7 +827,7 @@ h6 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 160px 0 80px 0;
+  padding: 180px 0 80px 0;
   text-align: center;
   position: relative;
 }
@@ -940,7 +940,7 @@ section,
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 100px 0;
+  padding: 120px 0;
 }
 
 .hero::after {
