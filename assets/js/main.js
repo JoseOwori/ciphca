@@ -186,8 +186,9 @@
             top: target.offsetTop - parseInt(scrollMarginTop || 0),
             behavior: 'smooth'
           });
-          // Clean URL by removing the hash
-          window.history.replaceState(null, null, window.location.pathname);
+          // Clean URL by removing the hash completely
+          const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search;
+          window.history.replaceState(null, null, cleanUrl);
         }, 100);
       }
     }
@@ -196,14 +197,23 @@
   /**
    * Handle smooth scrolling for navigation links and keep URL clean
    */
-  document.querySelectorAll('#navmenu a').forEach(navlink => {
+  document.querySelectorAll('a[href^="#"], #navmenu a').forEach(navlink => {
     navlink.addEventListener('click', function (e) {
-      if (!this.hash) return;
+      const hash = this.hash || (this.getAttribute('href') === '#' ? '#top' : null);
+      if (!hash) return;
 
-      const target = document.querySelector(this.hash);
+      if (hash === '#top') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search;
+        window.history.replaceState(null, null, cleanUrl);
+        return;
+      }
+
+      const target = document.querySelector(hash);
       if (target) {
-        // If it's a same-page link (or handled as such)
-        const isSamePage = this.pathname === window.location.pathname ||
+        // Same-page logic
+        const isSamePage = !this.pathname || this.pathname === window.location.pathname ||
           (this.pathname.endsWith('/') && window.location.pathname.endsWith('index.html')) ||
           window.location.pathname.endsWith(this.pathname);
 
@@ -215,8 +225,9 @@
             behavior: 'smooth'
           });
 
-          // Clean URL immediately after click
-          window.history.replaceState(null, null, window.location.pathname);
+          // Clean URL completely after click
+          const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search;
+          window.history.replaceState(null, null, cleanUrl);
 
           if (document.querySelector('.mobile-nav-active')) {
             mobileNavToogle();
