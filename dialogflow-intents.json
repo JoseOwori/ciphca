@@ -3,22 +3,36 @@
     {
       "name": "Welcome Intent",
       "trainingPhrases": [
-        "hi", "hello", "hey", "good morning", "good afternoon",
-        "start", "help", "info", "what can you do"
+        "hi",
+        "hello",
+        "hey",
+        "good morning",
+        "good afternoon",
+        "start",
+        "help",
+        "info",
+        "what can you do"
       ],
       "responses": [
         {
           "text": "Hi there! 👋 Welcome to Ciph Creative Agency!\n\nWe offer FREE services for East African businesses:\n\n📧 Email Notification Setup\n📱 Social Media Auto-Posting\n📊 Market Research AI\n💻 Advanced Technical Setup\n\nWhat would you like help with today?"
         }
       ],
-      "outputContexts": ["awaiting-service-selection"]
+      "outputContexts": [
+        "awaiting-service-selection"
+      ]
     },
     {
       "name": "Email Notification Intent",
       "trainingPhrases": [
-        "email notifications", "email setup", "contact form alerts",
-        "email alerts", "notification system", "form notifications",
-        "order notifications", "email automation"
+        "email notifications",
+        "email setup",
+        "contact form alerts",
+        "email alerts",
+        "notification system",
+        "form notifications",
+        "order notifications",
+        "email automation"
       ],
       "responses": [
         {
