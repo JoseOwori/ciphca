@@ -288,7 +288,7 @@ h6 {
 }
 
 [data-theme="dark"] .agency-tagline {
-  color: var(--heading-color);
+  color: var(--accent-color);
 }
 
 .header .btn-getstarted,
@@ -1009,11 +1009,11 @@ section,
   margin-bottom: 1.5rem;
 }
 
-.hero .agency-name h5 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--contrast-color);
+.hero .agency-name h5.agency-tagline {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent-color);
   margin: 0;
 }
 
@@ -1028,16 +1028,23 @@ section,
   letter-spacing: -1px;
   margin: 0;
   /* Premium animated gradient text effect */
-  background: linear-gradient(to right, var(--heading-color) 20%, var(--accent-color) 50%, var(--heading-color) 80%);
+  background: linear-gradient(110deg,
+      var(--heading-color) 30%,
+      var(--accent-color) 50%,
+      var(--heading-color) 70%);
   background-size: 200% auto;
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  animation: shine 6s linear infinite;
+  animation: shimmer 6s cubic-bezier(0.1, 0.7, 1.0, 0.1) infinite;
 }
 
-@keyframes shine {
-  to {
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
     background-position: 200% center;
   }
 }
