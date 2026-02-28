@@ -1027,6 +1027,19 @@ section,
   line-height: 1.2;
   letter-spacing: -1px;
   margin: 0;
+  /* Premium animated gradient text effect */
+  background: linear-gradient(to right, var(--heading-color) 20%, var(--accent-color) 50%, var(--heading-color) 80%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
 }
 
 @media (max-width: 1200px) {
