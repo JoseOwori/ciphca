@@ -281,8 +281,10 @@ h6 {
 
 .agency-tagline {
   color: var(--accent-color);
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 [data-theme="dark"] .agency-tagline {
@@ -1020,22 +1022,22 @@ section,
 }
 
 .hero .main-heading h1 {
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.2;
   letter-spacing: -1px;
   margin: 0;
 }
 
 @media (max-width: 1200px) {
   .hero .main-heading h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 }
 
 @media (max-width: 767px) {
   .hero .main-heading h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
 
