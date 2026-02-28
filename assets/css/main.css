@@ -265,7 +265,18 @@ h6 {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: var(--heading-color);
+  color: var(--accent-color);
+}
+
+.header .logo img,
+.footer .footer-about .logo img {
+  /* In case the logo PNG is white, this basic filter will tint it dark/blue in light mode */
+  filter: invert(24%) sepia(85%) saturate(1900%) hue-rotate(186deg) brightness(93%) contrast(95%);
+}
+
+[data-theme="dark"] .header .logo img,
+[data-theme="dark"] .footer .footer-about .logo img {
+  filter: none;
 }
 
 .agency-tagline {
@@ -661,7 +672,7 @@ h6 {
 }
 
 .footer .footer-about .logo span {
-  color: var(--heading-color);
+  color: var(--accent-color);
   font-size: 30px;
   font-weight: 700;
   letter-spacing: 1px;
