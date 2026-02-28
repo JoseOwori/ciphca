@@ -2,4 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /assets/img/person/
 Disallow: /assets/img/about/
+Disallow: /assets/img/portfolio/
+Disallow: /assets/img/misc/
+Disallow: /assets/img/abstract/
 Sitemap: https://ciphca.com/sitemap.xml
