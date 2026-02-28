@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /assets/img/person/
+Disallow: /assets/img/about/
 Sitemap: https://ciphca.com/sitemap.xml
