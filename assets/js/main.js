@@ -348,6 +348,7 @@
     function applyTheme(theme) {
       if (theme === 'dark') {
         root.setAttribute('data-theme', 'dark');
+        root.setAttribute('data-bs-theme', 'dark');
         toggles.forEach(toggle => {
           if (toggle) {
             toggle.innerHTML = '<i class="bi bi-sun"></i>';
@@ -356,6 +357,7 @@
         });
       } else {
         root.removeAttribute('data-theme');
+        root.removeAttribute('data-bs-theme');
         toggles.forEach(toggle => {
           if (toggle) {
             toggle.innerHTML = '<i class="bi bi-moon"></i>';

@@ -61,6 +61,26 @@
   --nav-dropdown-hover-color: var(--accent-color);
 }
 
+/* Form Overrides for Dark Mode */
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+  background-color: var(--background-color);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--default-color);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+  background-color: var(--surface-color);
+  border-color: var(--accent-color);
+  color: var(--heading-color);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .form-control::placeholder {
+  color: rgba(207, 223, 243, 0.5);
+}
+
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
   --nav-color: #2b3338;
