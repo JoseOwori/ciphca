@@ -4266,3 +4266,61 @@ html,
 body {
   transition: background-color 240ms ease, color 240ms ease;
 }
+
+/*--------------------------------------------------------------
+# Interactive Elements & Editorial Styles
+--------------------------------------------------------------*/
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--heading-color);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+  mix-blend-mode: difference;
+  left: -100px;
+  top: -100px;
+}
+
+.cursor-dot.expand {
+  width: 40px;
+  height: 40px;
+  background-color: var(--accent-color);
+  opacity: 0.5;
+  mix-blend-mode: normal;
+}
+
+/* Hide default cursor to use custom one */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  a,
+  button,
+  .interactive-btn,
+  .interactive-hover {
+    cursor: none;
+  }
+}
+
+.editorial-crop {
+  border-radius: 4px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  filter: grayscale(20%) contrast(1.1);
+  transition: filter 0.5s ease;
+}
+
+.editorial-crop:hover {
+  filter: grayscale(0%) contrast(1);
+}
+
+.magnetic-element {
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: inline-block;
+}
