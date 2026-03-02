@@ -61,6 +61,26 @@
   --nav-dropdown-hover-color: var(--accent-color);
 }
 
+/* Form Overrides for Dark Mode */
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+  background-color: var(--background-color);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--default-color);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+  background-color: var(--surface-color);
+  border-color: var(--accent-color);
+  color: var(--heading-color);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .form-control::placeholder {
+  color: rgba(207, 223, 243, 0.5);
+}
+
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
   --nav-color: #2b3338;
@@ -245,19 +265,30 @@ h6 {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: var(--heading-color);
+  color: var(--accent-color);
+}
+
+.header .logo img,
+.footer .footer-about .logo img {
+  /* In case the logo PNG is white, this basic filter will tint it dark/blue in light mode */
+  filter: invert(24%) sepia(85%) saturate(1900%) hue-rotate(186deg) brightness(93%) contrast(95%);
+}
+
+[data-theme="dark"] .header .logo img,
+[data-theme="dark"] .footer .footer-about .logo img {
+  filter: none;
 }
 
 .agency-tagline {
-  color: #0f4c81 !important;
-  /* Force Deep Blue in light mode */
-  font-weight: 600;
-  letter-spacing: 1px;
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 [data-theme="dark"] .agency-tagline {
-  color: #ffffff !important;
-  /* Force White in dark mode */
+  color: var(--accent-color);
 }
 
 .header .btn-getstarted,
@@ -643,7 +674,7 @@ h6 {
 }
 
 .footer .footer-about .logo span {
-  color: var(--heading-color);
+  color: var(--accent-color);
   font-size: 30px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -978,11 +1009,11 @@ section,
   margin-bottom: 1.5rem;
 }
 
-.hero .agency-name h5 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--contrast-color);
+.hero .agency-name h5.agency-tagline {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent-color);
   margin: 0;
 }
 
@@ -991,22 +1022,42 @@ section,
 }
 
 .hero .main-heading h1 {
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.2;
   letter-spacing: -1px;
   margin: 0;
+  /* Premium animated gradient text effect */
+  background: linear-gradient(110deg,
+      var(--heading-color) 30%,
+      var(--accent-color) 50%,
+      var(--heading-color) 70%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 6s cubic-bezier(0.1, 0.7, 1.0, 0.1) infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
 }
 
 @media (max-width: 1200px) {
   .hero .main-heading h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 }
 
 @media (max-width: 767px) {
   .hero .main-heading h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
 
@@ -1098,6 +1149,13 @@ section,
   width: 100%;
   height: auto;
   animation: float 6s ease-in-out infinite;
+  /* Make white-text image visible in light mode by inverting it */
+  filter: invert(1) brightness(0.2) contrast(1.2);
+  transition: filter 0.3s ease;
+}
+
+[data-theme="dark"] .hero .fluid-shape .fluid-img {
+  filter: none;
 }
 
 @keyframes float {
@@ -4207,4 +4265,62 @@ section,
 html,
 body {
   transition: background-color 240ms ease, color 240ms ease;
+}
+
+/*--------------------------------------------------------------
+# Interactive Elements & Editorial Styles
+--------------------------------------------------------------*/
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--heading-color);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+  mix-blend-mode: difference;
+  left: -100px;
+  top: -100px;
+}
+
+.cursor-dot.expand {
+  width: 40px;
+  height: 40px;
+  background-color: var(--accent-color);
+  opacity: 0.5;
+  mix-blend-mode: normal;
+}
+
+/* Hide default cursor to use custom one */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  a,
+  button,
+  .interactive-btn,
+  .interactive-hover {
+    cursor: none;
+  }
+}
+
+.editorial-crop {
+  border-radius: 4px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  filter: grayscale(20%) contrast(1.1);
+  transition: filter 0.5s ease;
+}
+
+.editorial-crop:hover {
+  filter: grayscale(0%) contrast(1);
+}
+
+.magnetic-element {
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: inline-block;
 }

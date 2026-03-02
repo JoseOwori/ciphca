@@ -348,6 +348,7 @@
     function applyTheme(theme) {
       if (theme === 'dark') {
         root.setAttribute('data-theme', 'dark');
+        root.setAttribute('data-bs-theme', 'dark');
         toggles.forEach(toggle => {
           if (toggle) {
             toggle.innerHTML = '<i class="bi bi-sun"></i>';
@@ -356,6 +357,7 @@
         });
       } else {
         root.removeAttribute('data-theme');
+        root.removeAttribute('data-bs-theme');
         toggles.forEach(toggle => {
           if (toggle) {
             toggle.innerHTML = '<i class="bi bi-moon"></i>';
@@ -403,6 +405,58 @@
     try {
       document.querySelectorAll('img[src^="assets/img"]:not([loading])').forEach(img => img.setAttribute('loading', 'lazy'));
     } catch (e) { }
+  });
+
+  /**
+   * Custom Interactive Cursor
+   */
+  const cursorDot = document.createElement('div');
+  cursorDot.classList.add('cursor-dot');
+  document.body.appendChild(cursorDot);
+
+  let mouseX = 0;
+  let mouseY = 0;
+  let cursorX = 0;
+  let cursorY = 0;
+
+  // Track mouse movement
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    // Update cursor position immediately for snappiness, or use requestAnimationFrame for trailing effect
+    cursorDot.style.left = `${mouseX}px`;
+    cursorDot.style.top = `${mouseY}px`;
+  });
+
+  // Expand cursor on interactive elements
+  const interactiveElements = document.querySelectorAll('a, button, .interactive-btn, .interactive-hover');
+
+  interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursorDot.classList.add('expand');
+    });
+    el.addEventListener('mouseleave', () => {
+      cursorDot.classList.remove('expand');
+    });
+  });
+
+  /**
+   * Magnetic Button Effect
+   */
+  const magneticElements = document.querySelectorAll('.interactive-btn');
+  magneticElements.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+    });
+
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = `translate(0px, 0px)`;
+    });
   });
 
 })();

@@ -9,7 +9,7 @@
     content="Ciph Creative Agency provides responsive, conversion-focused web design and UX/UI services — landing pages, branding, and e-commerce sites that help businesses grow.">
   <meta name="keywords"
     content="web design, website design, responsive web design, UX design, UI design, web design agency, landing page design, e-commerce design, conversion rate optimization, branding">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, noimageindex">
   <link rel="canonical" href="https://ciphca.com/web-design.html">
 
   <!-- Open Graph / Social -->
@@ -125,15 +125,42 @@
         </div>
 
         <div class="col-lg-4">
-          <div class="surface-card p-3">
-            <h5>Quick metrics to track</h5>
-            <ul>
-              <li>Bounce rate</li>
-              <li>Average session duration</li>
-              <li>Conversion rate</li>
-              <li>Page load time</li>
-            </ul>
-            <a href="index.html#contact" class="btn btn-primary mt-3">Book a design review</a>
+          <div class="surface-card p-4 rounded shadow-sm">
+            <h5 class="mb-3">Request a Quote</h5>
+            <form action="forms/request-quote.php" method="post" role="form" class="php-email-form">
+              <div class="mb-3">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+              <div class="mb-3">
+                <input type="url" class="form-control" name="website" id="website"
+                  placeholder="Current Website (optional)">
+              </div>
+              <div class="mb-3">
+                <select class="form-select" name="service" id="service" required>
+                  <option value="" selected disabled>Select Service Type</option>
+                  <option value="New Website Design">New Website Design</option>
+                  <option value="Website Redesign">Website Redesign</option>
+                  <option value="Landing Page">Landing Page</option>
+                  <option value="E-commerce Store">E-commerce Store</option>
+                  <option value="UI/UX Review">UI/UX Review</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <textarea class="form-control" name="message" rows="4" placeholder="Briefly describe your project goals"
+                  required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your request has been sent. We'll get back to you shortly!</div>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary w-100 py-2">Get My Proposal</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -147,7 +174,7 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">C|C|A</span>
+            <span class="sitename">Ciph Creative Agency</span>
           </a>
           <p>Transforming Ideas into Digital Excellence.</p>
           <div class="social-links d-flex mt-4">
