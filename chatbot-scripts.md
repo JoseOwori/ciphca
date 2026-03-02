@@ -627,7 +627,7 @@ Ready to transform your digital presence? Let's do this! 🚀
 
 ---
 
-C|C||A
+C|C|A 
 Transforming Ideas into Digital Excellence
 🌍 Proudly serving East Africa
 ```
@@ -710,4 +710,4 @@ What works best for you?
 
 **Last Updated:** February 2026
 **Version:** 1.0
-**Created for:** C|C||A
+**Created for:** C|C|A 
