@@ -1019,7 +1019,7 @@ section,
   margin-bottom: 2rem;
 }
 
-.hero .main-heading h1 {
+.hero .main-heading h2 {
   font-size: 4rem;
   font-weight: 800;
   line-height: 1.2;
@@ -1048,19 +1048,19 @@ section,
 }
 
 @media (max-width: 1200px) {
-  .hero .main-heading h1 {
+  .hero .main-heading h2 {
     font-size: 3.5rem;
   }
 }
 
 @media (max-width: 767px) {
-  .hero .main-heading h1 {
+  .hero .main-heading h2 {
     font-size: 2.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .hero .main-heading h1 {
+  .hero .main-heading h2 {
     font-size: 2.5rem;
   }
 }
@@ -1084,8 +1084,9 @@ section,
 
 .hero .description p {
   font-size: 1rem;
+  font-weight: 500;
   line-height: 1.7;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  color: var(--default-color);
   margin: 0;
 }
 
@@ -4292,18 +4293,46 @@ body {
 
 /* Default browser cursor restored — custom dot hidden via JS */
 
-.editorial-crop {
-  border-radius: 4px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  filter: grayscale(20%) contrast(1.1);
-  transition: filter 0.5s ease;
+/* Hero image wrapper — soft accent wash blends into white while making image content visible */
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Slightly deeper tint for better contrast of white elements within the image */
+  background: color-mix(in srgb, var(--accent-color), white 90%);
+  border-radius: 20px;
+  padding: 4px;
 }
 
-.editorial-crop:hover {
-  filter: grayscale(0%) contrast(1);
+/* Dark mode — soft accent tint; dark page already provides base contrast */
+[data-theme="dark"] .hero-image-wrapper {
+  background: color-mix(in srgb, var(--accent-color), transparent 85%);
 }
+
+/* Gradient mask: fades image edges into transparency (= page background colour).
+   Works identically on light AND dark themes — no colour overrides needed. */
+.editorial-crop {
+  width: 100%;
+  max-height: 420px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+
+  /* Refined mask: larger central clear area to ensure text in image remains sharp */
+  -webkit-mask-image:
+    radial-gradient(ellipse 92% 92% at 50% 50%, black 65%, transparent 100%);
+  mask-image:
+    radial-gradient(ellipse 92% 92% at 50% 50%, black 65%, transparent 100%);
+}
+
+@media (max-width: 991px) {
+  .editorial-crop {
+    max-height: 280px;
+  }
+}
+
 
 .magnetic-element {
   transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
