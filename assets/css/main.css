@@ -124,10 +124,8 @@
   color: var(--contrast-color);
 }
 
-/* Smooth scroll */
-:root {
-  scroll-behavior: smooth;
-}
+/* scroll-behavior: smooth removed from :root — it causes heavy mouse-scroll lag.
+   Link-click smooth scrolling is handled via JS window.scrollTo({ behavior: 'smooth' }) */
 
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
@@ -4262,6 +4260,15 @@ section,
 }
 
 /* Smooth theme transitions */
+html {
+  overflow-y: scroll;
+  /* Prevents layout shift from scrollbar appearing/disappearing */
+  overscroll-behavior: contain;
+  /* Prevents scroll chaining that causes delayed response */
+  touch-action: pan-y;
+  /* Ensures native momentum scrolling on touch devices */
+}
+
 html,
 body {
   transition: background-color 240ms ease, color 240ms ease;
@@ -4271,18 +4278,8 @@ body {
 # Interactive Elements & Editorial Styles
 --------------------------------------------------------------*/
 .cursor-dot {
-  width: 8px;
-  height: 8px;
-  background-color: var(--heading-color);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
-  mix-blend-mode: difference;
-  left: -100px;
-  top: -100px;
+  display: none;
+  /* Custom cursor removed — using default browser arrow */
 }
 
 .cursor-dot.expand {
@@ -4293,19 +4290,7 @@ body {
   mix-blend-mode: normal;
 }
 
-/* Hide default cursor to use custom one */
-@media (pointer: fine) {
-  body {
-    cursor: none;
-  }
-
-  a,
-  button,
-  .interactive-btn,
-  .interactive-hover {
-    cursor: none;
-  }
-}
+/* Default browser cursor restored — custom dot hidden via JS */
 
 .editorial-crop {
   border-radius: 4px;

@@ -19,7 +19,7 @@
     window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
   }
 
-  document.addEventListener('scroll', toggleScrolled);
+  document.addEventListener('scroll', toggleScrolled, { passive: true });
   window.addEventListener('load', toggleScrolled);
 
   /**
@@ -89,7 +89,7 @@
   });
 
   window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
+  document.addEventListener('scroll', toggleScrollTop, { passive: true });
 
   /**
    * Animation on scroll function and init
@@ -327,7 +327,7 @@
     }
   }
   window.addEventListener('load', navmenuScrollspy);
-  document.addEventListener('scroll', navmenuScrollspy);
+  document.addEventListener('scroll', navmenuScrollspy, { passive: true });
 
   /**
    * Theme toggle (light / dark) with persistence and accessibility
@@ -419,15 +419,13 @@
   let cursorX = 0;
   let cursorY = 0;
 
-  // Track mouse movement
+  // Track mouse movement — passive listener so it never blocks scroll
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-
-    // Update cursor position immediately for snappiness, or use requestAnimationFrame for trailing effect
     cursorDot.style.left = `${mouseX}px`;
     cursorDot.style.top = `${mouseY}px`;
-  });
+  }, { passive: true });
 
   // Expand cursor on interactive elements
   const interactiveElements = document.querySelectorAll('a, button, .interactive-btn, .interactive-hover');
