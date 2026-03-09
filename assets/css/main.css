@@ -893,7 +893,7 @@ h6 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 120px 0 60px 0;
+  padding: 80px 0 40px 0;
   text-align: center;
   position: relative;
 }
@@ -944,7 +944,7 @@ section,
 .section {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 40px 0;
+  padding: 25px 0;
   scroll-margin-top: 90px;
   overflow: clip;
 }
@@ -3508,7 +3508,7 @@ section,
 }
 
 .service-details .service-header {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .service-details .service-header h1 {
@@ -3531,9 +3531,9 @@ section,
 .service-details .service-header .service-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 15px;
-  margin-top: 15px;
+  gap: 12px;
+  margin-bottom: 12px;
+  margin-top: 12px;
 }
 
 .service-details .service-header .service-meta span {
@@ -3556,12 +3556,12 @@ section,
 }
 
 .service-details .service-tabs {
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 
 .service-details .service-tabs .nav-tabs {
   border-bottom: 2px solid color-mix(in srgb, var(--heading-color), transparent 90%);
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .service-details .service-tabs .nav-tabs .nav-item {
@@ -3648,7 +3648,7 @@ section,
 
 .service-details .service-tabs .tab-content .process-timeline .timeline-item {
   position: relative;
-  padding-bottom: 25px;
+  padding-bottom: 20px;
 }
 
 .service-details .service-tabs .tab-content .process-timeline .timeline-item:last-child {
