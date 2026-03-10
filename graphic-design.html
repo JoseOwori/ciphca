@@ -50,6 +50,7 @@
 </head>
 
 <body class="inner-page">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div
       class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -75,7 +76,8 @@
           <li><a href="portfolio-details.html">Portfolio</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list" aria-label="Open navigation menu" aria-expanded="false"
+          role="button" tabindex="0"></i>
       </nav>
 
       <!-- Theme toggle button -->
@@ -89,7 +91,7 @@
     </div>
   </header>
 
-  <main class="main mt-5 pt-5">
+  <main id="main-content" class="main mt-5 pt-5">
     <div class="container">
       <div class="section-title" data-aos="fade-up">
         <h2>Graphic Design</h2>
@@ -124,16 +126,20 @@
             <h5 class="mb-3">Request a Quote</h5>
             <form action="forms/request-quote.php" method="post" role="form" class="php-email-form">
               <div class="mb-3">
+                <label for="name" class="visually-hidden">Your Name</label>
                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
               </div>
               <div class="mb-3">
+                <label for="email" class="visually-hidden">Your Email</label>
                 <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
               </div>
               <div class="mb-3">
+                <label for="website" class="visually-hidden">Current Website (optional)</label>
                 <input type="url" class="form-control" name="website" id="website"
                   placeholder="Current Website (optional)">
               </div>
               <div class="mb-3">
+                <label for="service" class="visually-hidden">Select Service Type</label>
                 <select class="form-select" name="service" id="service" required>
                   <option value="" disabled>Select Service Type</option>
                   <option value="Graphic Design" selected>Graphic Design</option>
@@ -144,7 +150,8 @@
                 </select>
               </div>
               <div class="mb-3">
-                <textarea class="form-control" name="message" rows="4"
+                <label for="message" class="visually-hidden">Project Requirements</label>
+                <textarea class="form-control" name="message" id="message" rows="4"
                   placeholder="Briefly describe your project requirements" required></textarea>
               </div>
               <div class="my-3">
