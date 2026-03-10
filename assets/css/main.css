@@ -4329,20 +4329,7 @@ body {
 /*--------------------------------------------------------------
 # Interactive Elements & Editorial Styles
 --------------------------------------------------------------*/
-.cursor-dot {
-  display: none;
-  /* Custom cursor removed — using default browser arrow */
-}
 
-.cursor-dot.expand {
-  width: 40px;
-  height: 40px;
-  background-color: var(--accent-color);
-  opacity: 0.5;
-  mix-blend-mode: normal;
-}
-
-/* Default browser cursor restored — custom dot hidden via JS */
 
 /* Hero image wrapper — Blended naturally with the white theme */
 .hero-image-wrapper {
@@ -4383,10 +4370,4 @@ body {
   .editorial-crop {
     max-height: 280px;
   }
-}
-
-
-.magnetic-element {
-  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-  display: inline-block;
 }
