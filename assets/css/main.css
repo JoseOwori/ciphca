@@ -141,8 +141,18 @@ body {
   background-color: var(--background-color);
   font-family: var(--default-font);
   line-height: var(--base-line-height);
-  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Increase top clearance for fixed header on inner pages */
+.inner-page .main {
+  padding-top: 120px;
+}
+
+@media (max-width: 1199px) {
+  .inner-page .main {
+    padding-top: 100px;
+  }
 }
 
 a {
