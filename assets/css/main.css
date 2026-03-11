@@ -18,6 +18,25 @@
   --base-font-size: 16px;
   --base-line-height: 1.6;
   --spacer: 1.25rem;
+  --header-offset: 120px;
+}
+
+@media (max-width: 1199px) {
+  :root {
+    --header-offset: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-offset: 90px;
+  }
+}
+
+@media (max-width: 575px) {
+  :root {
+    --header-offset: 80px;
+  }
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -146,13 +165,7 @@ body {
 
 /* Increase top clearance for fixed header on inner pages */
 .inner-page .main {
-  padding-top: 120px;
-}
-
-@media (max-width: 1199px) {
-  .inner-page .main {
-    padding-top: 100px;
-  }
+  padding-top: var(--header-offset);
 }
 
 a {
