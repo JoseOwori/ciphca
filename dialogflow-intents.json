@@ -3,19 +3,19 @@
     {
       "name": "Welcome Intent",
       "trainingPhrases": [
-        "hi",
-        "hello",
-        "hey",
-        "good morning",
-        "good afternoon",
-        "start",
-        "help",
-        "info",
-        "what can you do"
+        "Hi",
+        "Hello",
+        "Hey",
+        "Good morning",
+        "Good afternoon",
+        "Start",
+        "Help",
+        "Info",
+        "What can you do"
       ],
       "responses": [
         {
-          "text": "Hi there! 👋 C|C|A !\n\nWe offer FREE services for East African businesses:\n\n📧 Email Notification Setup\n📱 Social Media Auto-Posting\n📊 Market Research AI\n💻 Advanced Technical Setup\n\nWhat would you like help with today?"
+          "text": "Hi there, 👋 C|C|A !\n\nWe offer FREE services for East African businesses:\n\n📧 Email Notification Setup\n📱 Social Media Auto-Posting\n📊 Market Research AI\n💻 Advanced Technical Setup\n\nWhat would you like help with today?"
         }
       ],
       "outputContexts": [
@@ -36,7 +36,7 @@
       ],
       "responses": [
         {
-          "text": "Great! I can help with FREE email notifications! ✅\n\nOur setup includes:\n✓ Contact form alerts\n✓ Order confirmations\n✓ Welcome emails\n✓ Status updates\n\nWhat type do you need?"
+          "text": "Great, I can help with FREE email notifications! ✅\n\nOur setup includes:\n✓ Contact form alerts\n✓ Order confirmations\n✓ Welcome emails\n✓ Status updates\n\nWhat type do you need?"
         }
       ]
     }

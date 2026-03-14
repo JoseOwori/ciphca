@@ -10,7 +10,7 @@
 
 **Bot Response:**
 ```
-Hi there! 👋 I can help you set up FREE email notifications for your website or business.
+Hi there, 👋 I can help you set up FREE email notifications for your website or business.
 
 Our email notification setup includes:
 ✅ Contact form notifications
