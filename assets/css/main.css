@@ -16,7 +16,7 @@
   --heading-font: "Inter", sans-serif;
   --nav-font: "Inter", sans-serif;
   --base-font-size: 16px;
-  --base-line-height: 1.6;
+  --base-line-height: 1.7;
   --spacer: 1.25rem;
   --header-offset: 120px;
 }
@@ -161,6 +161,7 @@ body {
   font-family: var(--default-font);
   line-height: var(--base-line-height);
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Increase top clearance for fixed header on inner pages */
@@ -229,6 +230,16 @@ h6 {
   outline-offset: 3px !important;
 }
 
+/* Custom Button Micro-interactions */
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover, .btn-getstarted:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
 /*--------------------------------------------------------------
 # Cards
 --------------------------------------------------------------*/
@@ -238,8 +249,15 @@ h6 {
   --bs-card-color: var(--default-color);
   background-color: var(--surface-color);
   color: var(--default-color);
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.4s ease, color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.card:hover,
+.legal-content .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
 
 /* PHP Email Form Messages
 ------------------------------*/

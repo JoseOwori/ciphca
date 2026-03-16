@@ -400,11 +400,4 @@
     });
   })();
 
-  // Set loading="lazy" on images that don't specify loading (progressive enhancement)
-  document.addEventListener('DOMContentLoaded', function () {
-    try {
-      document.querySelectorAll('img[src^="assets/img"]:not([loading])').forEach(img => img.setAttribute('loading', 'lazy'));
-    } catch (e) { }
-  });
-
 })();
