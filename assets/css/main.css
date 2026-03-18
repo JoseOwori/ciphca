@@ -15,8 +15,9 @@
   --default-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
   --heading-font: "Inter", sans-serif;
   --nav-font: "Inter", sans-serif;
+  --mono-font: "Geist Mono", "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
   --base-font-size: 16px;
-  --base-line-height: 1.7;
+  --base-line-height: 1.8;
   --spacer: 1.25rem;
   --header-offset: 120px;
 }
@@ -41,13 +42,13 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
-  /* Neutral / Premium palette */
-  --background-color: #f5f7fb;
-  /* Very light neutral background */
-  --default-color: #2b3338;
-  /* Primary body text */
-  --heading-color: #0b1220;
-  /* Headings */
+  /* Editorial / Premium palette */
+  --background-color: #fafafa;
+  /* Clean white background */
+  --default-color: #1a1a1a;
+  /* Primary body text — deeper for contrast */
+  --heading-color: #0a0a0a;
+  /* Near-black headings */
   --accent-color: #0f4c81;
   /* Primary accent (deep blue) */
   --surface-color: #ffffff;
@@ -58,25 +59,25 @@
 
 /* Dark theme variables applied when `data-theme="dark"` is set on the document root */
 [data-theme="dark"] {
-  --background-color: #081016;
-  /* deep page background */
-  --default-color: #cfdff3;
+  --background-color: #0a0a0a;
+  /* True black page background */
+  --default-color: #d4d4d4;
   /* body text on dark */
-  --heading-color: #ffffff;
-  /* headings */
+  --heading-color: #fafafa;
+  /* near-white headings */
   --accent-color: #4da6ff;
   /* lighter accent for dark */
-  --surface-color: #0f1720;
+  --surface-color: #141414;
   /* cards / surfaces */
   --contrast-color: #ffffff;
   /* for text on accent */
 
   /* nav overrides on dark */
-  --nav-color: #cfdff3;
+  --nav-color: #d4d4d4;
   --nav-hover-color: var(--accent-color);
-  --nav-mobile-background-color: #071018;
-  --nav-dropdown-background-color: #071018;
-  --nav-dropdown-color: #cfdff3;
+  --nav-mobile-background-color: #0a0a0a;
+  --nav-dropdown-background-color: #0a0a0a;
+  --nav-dropdown-color: #d4d4d4;
   --nav-dropdown-hover-color: var(--accent-color);
 }
 
@@ -189,6 +190,7 @@ h5,
 h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
+  letter-spacing: -0.02em;
 }
 
 /* Accessibility Utilities */
@@ -249,13 +251,17 @@ h6 {
   --bs-card-color: var(--default-color);
   background-color: var(--surface-color);
   color: var(--default-color);
-  transition: background-color 0.4s ease, color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 94%);
+  box-shadow: none;
+  border-radius: 8px;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .card:hover,
 .legal-content .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+  background-color: var(--background-color);
 }
 
 
@@ -325,9 +331,10 @@ h6 {
 
 .header .header-container {
   background: var(--surface-color);
-  border-radius: 12px;
-  padding: 10px 28px;
-  box-shadow: 0px 6px 20px rgba(15, 20, 28, 0.06);
+  border-radius: 8px; /* Sharper, more premium */
+  padding: 8px 32px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 94%);
 }
 
 .header .logo {
@@ -340,12 +347,12 @@ h6 {
 }
 
 .header .logo h1 {
-  font-size: 20px;
+  font-size: 18px;
   margin: 0;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--accent-color);
+  letter-spacing: 0.1em;
+  color: var(--heading-color);
 }
 
 .header .logo img,
@@ -362,8 +369,8 @@ h6 {
 .agency-tagline {
   color: var(--accent-color);
   font-weight: 700;
-  font-size: 1.5rem;
-  letter-spacing: 2px;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
@@ -474,15 +481,16 @@ h6 {
   .navmenu a,
   .navmenu a:focus {
     color: var(--nav-color);
-    padding: 18px 15px;
-    font-size: 16px;
+    padding: 12px 18px;
+    font-size: 15px;
     font-family: var(--nav-font);
-    font-weight: 400;
+    font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: space-between;
     white-space: nowrap;
     transition: 0.3s;
+    letter-spacing: 0.02em;
   }
 
   .navmenu a i,
@@ -733,13 +741,13 @@ h6 {
   color: var(--default-color);
   background-color: var(--background-color);
   font-size: 14px;
-  padding-bottom: 50px;
+  padding-bottom: 80px;
   position: relative;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 94%);
 }
 
 .footer .footer-top {
-  padding-top: 50px;
-  border-top: 1px solid rgba(43, 51, 56, 0.1);
+  padding-top: 80px;
   border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
@@ -788,10 +796,20 @@ h6 {
 }
 
 .footer h4 {
-  font-size: 16px;
-  font-weight: bold;
-  position: relative;
+  font-family: var(--mono-font);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   padding-bottom: 12px;
+  margin-bottom: 25px;
+  position: relative;
+  color: var(--heading-color);
+}
+
+.footer h4::before {
+  content: "// ";
+  color: var(--accent-color);
 }
 
 .footer .footer-links {
@@ -823,11 +841,13 @@ h6 {
 .footer .footer-links ul a {
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   display: inline-block;
-  line-height: 1;
+  line-height: 1.8;
+  transition: 0.3s;
 }
 
 .footer .footer-links ul a:hover {
   color: var(--accent-color);
+  transform: translateX(4px);
 }
 
 .footer .footer-contact p {
@@ -929,6 +949,12 @@ h6 {
   }
 }
 
+/* Global AOS overrides for smoother editorial feel */
+[data-aos] {
+  transition-duration: 1000ms !important;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1) !important;
+}
+
 /*--------------------------------------------------------------
 # Global Page Titles & Breadcrumbs
 --------------------------------------------------------------*/
@@ -938,7 +964,7 @@ h6 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 180px 0 80px 0;
+  padding: 200px 0 100px 0;
   text-align: center;
   position: relative;
 }
@@ -955,9 +981,10 @@ h6 {
 }
 
 .page-title h1 {
-  font-size: 42px;
-  font-weight: 700;
-  margin-bottom: 10px;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.03em;
 }
 
 .page-title .breadcrumbs ol {
@@ -989,7 +1016,7 @@ section,
 .section {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 60px 0;
+  padding: 100px 0;
   scroll-margin-top: 90px;
   overflow: clip;
 }
@@ -998,7 +1025,16 @@ section,
 
   section,
   .section {
+    padding: 80px 0;
     scroll-margin-top: 66px;
+  }
+}
+
+@media (max-width: 767px) {
+
+  section,
+  .section {
+    padding: 64px 0;
   }
 }
 
@@ -1034,11 +1070,53 @@ section,
 .section-title div {
   color: var(--heading-color);
   margin: 0;
-  margin: 0;
-  font-size: 28px;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
   font-weight: 700;
   text-transform: uppercase;
   font-family: var(--heading-font);
+  letter-spacing: -0.02em;
+}
+
+/*--------------------------------------------------------------
+# Editorial Section Labels (Good-Fella inspired)
+--------------------------------------------------------------*/
+.section-label {
+  display: block;
+  font-family: var(--mono-font);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  margin-bottom: 1rem;
+}
+
+.section-label::before {
+  content: "// ";
+  color: var(--accent-color);
+}
+
+/* Alternating section themes */
+.section--dark {
+  background-color: var(--heading-color);
+  color: var(--background-color);
+}
+
+.section--dark h1,
+.section--dark h2,
+.section--dark h3,
+.section--dark h4,
+.section--dark h5,
+.section--dark h6 {
+  color: #fafafa;
+}
+
+.section--dark .section-label {
+  color: rgba(250, 250, 250, 0.5);
+}
+
+[data-theme="dark"] .section--dark {
+  background-color: var(--surface-color);
 }
 
 /*--------------------------------------------------------------
@@ -1051,7 +1129,7 @@ section,
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 120px 0;
+  padding: 140px 0 120px;
 }
 
 .hero::after {
@@ -1102,10 +1180,10 @@ section,
 }
 
 .hero .main-heading h1 {
-  font-size: 4rem;
+  font-size: clamp(3rem, 7vw, 6rem);
   font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: -1px;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
   margin: 0;
   /* Premium animated gradient text effect */
   background: linear-gradient(110deg,
@@ -1126,24 +1204,6 @@ section,
 
   100% {
     background-position: 200% center;
-  }
-}
-
-@media (max-width: 1200px) {
-  .hero .main-heading h1 {
-    font-size: 3.5rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .hero .main-heading h1 {
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero .main-heading h1 {
-    font-size: 2.5rem;
   }
 }
 
@@ -1175,29 +1235,37 @@ section,
   display: inline-flex;
   align-items: center;
   background-color: transparent;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 40%);
+  border: 1px solid var(--default-color);
   color: var(--default-color);
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
+  padding: 1rem 2.5rem;
+  border-radius: 4px; /* Editorial sharp corners */
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .hero .cta-button .btn span {
-  margin-right: 0.5rem;
+  margin-right: 0.75rem;
 }
 
 .hero .cta-button .btn i {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   transition: transform 0.3s ease;
 }
 
 .hero .cta-button .btn:hover {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
-  color: var(--contrast-color);
+  background-color: var(--default-color);
+  color: var(--background-color);
+  border-color: var(--default-color);
+}
+
+.hero .cta-button .btn:hover i {
+  transform: translateX(4px);
 }
 
 .hero .cta-button .btn:hover i {
