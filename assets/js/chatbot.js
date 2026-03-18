@@ -137,10 +137,59 @@ class CiphChatbot {
 
     if (!message) return;
 
+    if (this.conversationState === 'awaiting_email') {
+      this.handleEmailInput(message);
+      input.value = '';
+      return;
+    }
+
     this.addUserMessage(message);
     input.value = '';
 
     this.processMessage(message);
+  }
+
+  handleEmailInput(message) {
+    this.addUserMessage(message);
+    
+    // Simple email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailRegex.test(message) || message.toLowerCase() === 'skip') {
+      if (message.toLowerCase() !== 'skip') {
+        this.userContext.userEmail = message;
+      }
+      
+      this.showTypingIndicator();
+      setTimeout(() => {
+        this.hideTypingIndicator();
+        this.addBotMessage("Got it! Thank you. 🙏\n\nHow would you like to connect with our team?");
+        this.showContactOptions();
+      }, 800);
+    } else {
+      this.addBotMessage("That doesn't look like a valid email. Please try again or type 'skip' to continue.");
+    }
+  }
+
+  showContactOptions() {
+    this.conversationState = 'contact_options';
+    this.showQuickReplies([
+      { text: '📱 WhatsApp (Fastest)', value: 'whatsapp' },
+      { text: '📧 Email', value: 'send_email' },
+      { text: '📅 Schedule Call', value: 'schedule' },
+      { text: '❌ Close', value: 'close' }
+    ]);
+  }
+
+  promptForEmail() {
+    this.conversationState = 'awaiting_email';
+    this.showTypingIndicator();
+    setTimeout(() => {
+      this.hideTypingIndicator();
+      this.addBotMessage(
+        "Perfect! 🚀 Before we connect, could you please share your **email address**?\n\n" +
+        "This helps us follow up with you quickly. (Or type 'skip')"
+      );
+    }, 800);
   }
 
   processMessage(message) {
@@ -156,14 +205,19 @@ class CiphChatbot {
       if (lowerMessage.includes('web dev') || lowerMessage.includes('development') || lowerMessage.includes('software') || lowerMessage.includes('backend') || lowerMessage.includes('frontend')) {
         this.handleWebDevelopment();
       } else if (lowerMessage.includes('web design') || lowerMessage.includes('design') || lowerMessage.includes('ui') || lowerMessage.includes('ux') || lowerMessage.includes('responsive')) {
+        this.userContext.lastSelectionText = 'Web Design';
         this.handleWebDesign();
       } else if (lowerMessage.includes('marketing') || lowerMessage.includes('seo') || lowerMessage.includes('digital') || lowerMessage.includes('campaign')) {
+        this.userContext.lastSelectionText = 'Digital Marketing';
         this.handleMarketing();
       } else if (lowerMessage.includes('graphic') || lowerMessage.includes('branding') || lowerMessage.includes('logo')) {
+        this.userContext.lastSelectionText = 'Graphic Design';
         this.handleGraphicDesign();
       } else if (lowerMessage.includes('product') || lowerMessage.includes('management') || lowerMessage.includes('strategy')) {
+        this.userContext.lastSelectionText = 'Product Management';
         this.handleProductManagement();
       } else if (lowerMessage.includes('microsoft') || lowerMessage.includes('365') || lowerMessage.includes('office')) {
+        this.userContext.lastSelectionText = 'Microsoft 365';
         this.handleMicrosoft365();
       } else if (lowerMessage.includes('ecommerce') || lowerMessage.includes('e-commerce') || lowerMessage.includes('shop') || lowerMessage.includes('store')) {
         this.handleEcommerce();
@@ -524,7 +578,10 @@ class CiphChatbot {
   handleQuickReply(value) {
     // Handle specific quick reply actions
     if (value === 'send_email') {
-      window.location.href = 'mailto:ciphcreativeagency@gmail.com?subject=Inquiry from Website Chatbot&body=Hi, I\'m interested in your services. Please contact me.';
+      const selectedService = this.userContext.lastSelectionText || 'your services';
+      const emailSubject = encodeURIComponent(`Inquiry: ${selectedService}`);
+      const emailBody = encodeURIComponent(`Hi Ciph Team,\n\nI'm interested in ${selectedService}. Please get back to me with more information.\n\nThank you.`);
+      window.location.href = `mailto:ciphcreativeagency@gmail.com?subject=${emailSubject}&body=${emailBody}`;
       this.addBotMessage(
         "Opening your email client... 📧\n\n" +
         "We'll respond within 2 hours during business hours!"
@@ -533,7 +590,10 @@ class CiphChatbot {
         this.closeConversation();
       }, 2000);
     } else if (value === 'whatsapp') {
-      window.open('https://wa.me/256393242000?text=Hi, I\'m interested in Ciph Creative Agency services!', '_blank');
+      const selectedService = this.userContext.lastSelectionText || 'your services';
+      const userEmail = this.userContext.userEmail ? ` (Email: ${this.userContext.userEmail})` : '';
+      const whatsappMsg = encodeURIComponent(`Hi, I'm interested in ${selectedService}!${userEmail}`);
+      window.open(`https://wa.me/256393242000?text=${whatsappMsg}`, '_blank');
       this.addBotMessage(
         "Opening WhatsApp... 💬\n\n" +
         "Our team will respond to you shortly!"
@@ -552,40 +612,10 @@ class CiphChatbot {
       }, 2000);
     } else if (value === 'business_website' || value === 'custom_solution' || value === 'new_design' ||
       value === 'redesign' || value === 'branding' || value === 'get_customers' ||
-      value === 'seo' || value === 'social_media' || value === 'full_marketing') {
-      // All specific service requests lead to contact
-      this.addBotMessage(
-        "Perfect! Let's discuss your project. 🚀\n\n" +
-        "Our team will provide:\n" +
-        "✅ Free consultation\n" +
-        "✅ Custom quote within 24 hours\n" +
-        "✅ Project timeline\n\n" +
-        "How would you like to connect?"
-      );
-      setTimeout(() => {
-        this.showQuickReplies([
-          { text: '📱 WhatsApp (Fastest)', value: 'whatsapp' },
-          { text: '📧 Email', value: 'send_email' },
-          { text: '📅 Schedule Call', value: 'schedule' }
-        ]);
-      }, 1000);
-    } else if (value === 'ecommerce') {
-      this.addBotMessage(
-        "Great choice! We build online stores that sell. 🛒\n\n" +
-        "We'll help you with:\n" +
-        "✅ Product catalog\n" +
-        "✅ Payment integration\n" +
-        "✅ Inventory management\n" +
-        "✅ Mobile shopping\n\n" +
-        "Let's discuss your store!"
-      );
-      setTimeout(() => {
-        this.showQuickReplies([
-          { text: '📱 WhatsApp Us', value: 'whatsapp' },
-          { text: '📧 Email Us', value: 'send_email' },
-          { text: '📅 Schedule Call', value: 'schedule' }
-        ]);
-      }, 1000);
+      value === 'seo' || value === 'social_media' || value === 'full_marketing' || 
+      value === 'ecommerce' || value === 'consultation' || value === 'expert' || value === 'quote') {
+      // All specific service requests lead to email prompt
+      this.promptForEmail();
     } else if (value === 'consultation' || value === 'expert') {
       this.addBotMessage(
         "Smart move! Let's schedule a FREE consultation. 🎯\n\n" +
@@ -738,6 +768,11 @@ class CiphChatbot {
       button.className = 'quick-reply-btn';
       button.textContent = reply.text;
       button.addEventListener('click', () => {
+        // Track the selection text for context (e.g., for WhatsApp messages)
+        if (reply.value !== 'whatsapp' && reply.value !== 'send_email' && reply.value !== 'schedule') {
+          this.userContext.lastSelectionText = reply.text;
+        }
+        
         this.addUserMessage(reply.text);
         container.innerHTML = '';
         this.handleQuickReply(reply.value);
