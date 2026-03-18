@@ -20,7 +20,7 @@ class CiphChatbot {
   createChatbotHTML() {
     const chatbotHTML = `
       <div id="ciph-chatbot" class="ciph-chatbot">
-        <div class="chatbot-toggle" id="chatbot-toggle" aria-label="Open Ciph Assistant Chatbot" aria-expanded="false" role="button" tabindex="0">
+        <div class="chatbot-toggle" id="chatbot-toggle" aria-label="Open Ciph Creative Agency Assistant Chatbot" aria-expanded="false" role="button" tabindex="0">
           <i class="bi bi-chat-dots"></i>
           <span class="notification-badge">1</span>
         </div>
@@ -29,10 +29,10 @@ class CiphChatbot {
           <div class="chatbot-header">
             <div class="header-content">
               <div class="avatar">
-                <i class="bi bi-robot"></i>
+                <img src="assets/img/file.webp" alt="Ciph Creative Agency Assistant" class="avatar-img">
               </div>
               <div class="header-text">
-                <h4>Ciph Assistant</h4>
+                <h4>Ciph Creative Agency Assistant</h4>
                 <span class="status">Online • Responds in minutes</span>
               </div>
             </div>
@@ -115,7 +115,7 @@ class CiphChatbot {
   showWelcomeMessage() {
     setTimeout(() => {
       this.addBotMessage(
-        "Hi! 👋 I'm here to help you find the right service.\n\n" +
+        "Hi, I'm here to help you find the right service.\n\n" +
         "What brings you here today?",
         false
       );
@@ -151,18 +151,18 @@ class CiphChatbot {
 
   handleEmailInput(message) {
     this.addUserMessage(message);
-    
+
     // Simple email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(message) || message.toLowerCase() === 'skip') {
       if (message.toLowerCase() !== 'skip') {
         this.userContext.userEmail = message;
       }
-      
+
       this.showTypingIndicator();
       setTimeout(() => {
         this.hideTypingIndicator();
-        this.addBotMessage("Got it! Thank you. 🙏\n\nHow would you like to connect with our team?");
+        this.addBotMessage("Got it! Thank you. \n\nHow would you like to connect with our team?");
         this.showContactOptions();
       }, 800);
     } else {
@@ -186,7 +186,7 @@ class CiphChatbot {
     setTimeout(() => {
       this.hideTypingIndicator();
       this.addBotMessage(
-        "Perfect! 🚀 Before we connect, could you please share your **email address**?\n\n" +
+        "Perfect! Before we connect, could you please share your **email address**?\n\n" +
         "This helps us follow up with you quickly. (Or type 'skip')"
       );
     }, 800);
@@ -246,7 +246,7 @@ class CiphChatbot {
   handleWebDevelopment() {
     this.conversationState = 'web_dev';
     this.addBotMessage(
-      "Great! I can help you build a website. 💻\n\n" +
+      "Great, I can help you build a website. 💻\n\n" +
       "What type of website do you need?"
     );
 
@@ -263,7 +263,7 @@ class CiphChatbot {
   handleWebDesign() {
     this.conversationState = 'web_design';
     this.addBotMessage(
-      "Perfect! Let's improve your design. 🎨\n\n" +
+      "Perfect, Let's improve your design. 🎨\n\n" +
       "What do you need help with?"
     );
 
@@ -280,7 +280,7 @@ class CiphChatbot {
   handleMarketing() {
     this.conversationState = 'marketing';
     this.addBotMessage(
-      "Excellent! Let's grow your business. 📈\n\n" +
+      "Excellent, Let's grow your business. 📈\n\n" +
       "What's your main goal?"
     );
 
@@ -297,7 +297,7 @@ class CiphChatbot {
   handleGraphicDesign() {
     this.conversationState = 'graphic';
     this.addBotMessage(
-      "Awesome! 🎨 Our Graphic Design services include:\n\n" +
+      "Awesome, 🎨 Our Graphic Design services include:\n\n" +
       "✅ Business Branding\n" +
       "✅ Logo Design\n" +
       "✅ Marketing Materials\n" +
@@ -322,7 +322,7 @@ class CiphChatbot {
   handleProductManagement() {
     this.conversationState = 'product';
     this.addBotMessage(
-      "Excellent! 💼 Our Product Management services help you:\n\n" +
+      "Excellent, 💼 Our Product Management services help you:\n\n" +
       "✅ Define Product Strategy\n" +
       "✅ Create Roadmaps\n" +
       "✅ Validate Ideas\n" +
@@ -347,7 +347,7 @@ class CiphChatbot {
   handleMicrosoft365() {
     this.conversationState = 'microsoft';
     this.addBotMessage(
-      "Great! ☁️ Our Microsoft 365 Support includes:\n\n" +
+      "Great, Our Microsoft 365 Support includes:\n\n" +
       "✅ Setup & Configuration\n" +
       "✅ Migration Services\n" +
       "✅ Training & Support\n" +
@@ -372,7 +372,7 @@ class CiphChatbot {
   handleEcommerce() {
     this.conversationState = 'ecommerce';
     this.addBotMessage(
-      "Perfect for online selling! 🛒 Our E-commerce solutions include:\n\n" +
+      "Perfect for online selling, 🛒 Our E-commerce solutions include:\n\n" +
       "✅ Custom Online Stores\n" +
       "✅ Payment Gateway Integration\n" +
       "✅ Inventory Management\n" +
@@ -397,7 +397,7 @@ class CiphChatbot {
   handlePWA() {
     this.conversationState = 'pwa';
     this.addBotMessage(
-      "Excellent choice! 📱 Progressive Web Apps offer:\n\n" +
+      "Excellent choice, 📱 Progressive Web Apps offer:\n\n" +
       "✅ App-like Experience\n" +
       "✅ Works Offline\n" +
       "✅ Fast Loading\n" +
@@ -443,7 +443,7 @@ class CiphChatbot {
 
   handlePricingInquiry() {
     this.addBotMessage(
-      "Great question! 💰\n\n" +
+      "Great question, 💰\n\n" +
       "Our pricing is customized based on your specific needs. We offer:\n\n" +
       "✅ Flexible payment plans\n" +
       "✅ Competitive rates for East Africa\n" +
@@ -466,7 +466,7 @@ class CiphChatbot {
 
   handlePortfolio() {
     this.addBotMessage(
-      "Check out our work! 🎨\n\n" +
+      "Check out our work, 🎨\n\n" +
       "We've completed 5,000+ successful campaigns and projects across:\n\n" +
       "✅ Web Development\n" +
       "✅ E-commerce Stores\n" +
@@ -510,7 +510,7 @@ class CiphChatbot {
 
   handleGreeting() {
     this.addBotMessage(
-      "Hello! 👋 Welcome to Ciph Creative Agency!\n\n" +
+      "Hello, Welcome to Ciph Creative Agency!\n\n" +
       "We're a leading digital agency in East Africa (Uganda, Kenya, Tanzania, Rwanda) specializing in:\n\n" +
       "🌐 Web Development & Design\n" +
       "📱 Digital Marketing\n" +
@@ -612,7 +612,7 @@ class CiphChatbot {
       }, 2000);
     } else if (value === 'business_website' || value === 'custom_solution' || value === 'new_design' ||
       value === 'redesign' || value === 'branding' || value === 'get_customers' ||
-      value === 'seo' || value === 'social_media' || value === 'full_marketing' || 
+      value === 'seo' || value === 'social_media' || value === 'full_marketing' ||
       value === 'ecommerce' || value === 'consultation' || value === 'expert' || value === 'quote') {
       // All specific service requests lead to email prompt
       this.promptForEmail();
@@ -665,7 +665,7 @@ class CiphChatbot {
 
   closeConversation() {
     this.addBotMessage(
-      "Thank you for chatting with us! 🙏\n\n" +
+      "Thank you for chatting with us 🙏\n\n" +
       "We're excited to help your business grow!\n\n" +
       "If you have any more questions, feel free to:\n" +
       "📧 Email: ciphcreativeagency@gmail.com\n" +
@@ -695,7 +695,7 @@ class CiphChatbot {
 
     // Show welcome message again
     this.addBotMessage(
-      "Welcome back! 👋\n\n" +
+      "Welcome back\n\n" +
       "How can I help you today?"
     );
 
@@ -720,7 +720,7 @@ class CiphChatbot {
     const formattedMessage = message.replace(/\n/g, '<br>');
     const messageHTML = `
       <div class="message bot-message">
-        ${showAvatar ? '<div class="message-avatar"><i class="bi bi-robot"></i></div>' : ''}
+        ${showAvatar ? '<div class="message-avatar"><img src="assets/img/file.webp" alt="Bot" class="avatar-img"></div>' : ''}
         <div class="message-content">${formattedMessage}</div>
       </div>
     `;
@@ -740,7 +740,7 @@ class CiphChatbot {
     const messagesContainer = document.getElementById('chatbot-messages');
     const typingHTML = `
       <div class="message bot-message typing-indicator" id="typing-indicator">
-        <div class="message-avatar"><i class="bi bi-robot"></i></div>
+        <div class="message-avatar"><img src="assets/img/file.webp" alt="Bot" class="avatar-img"></div>
         <div class="typing-dots">
           <span></span>
           <span></span>
@@ -772,7 +772,7 @@ class CiphChatbot {
         if (reply.value !== 'whatsapp' && reply.value !== 'send_email' && reply.value !== 'schedule') {
           this.userContext.lastSelectionText = reply.text;
         }
-        
+
         this.addUserMessage(reply.text);
         container.innerHTML = '';
         this.handleQuickReply(reply.value);
