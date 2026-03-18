@@ -61,6 +61,11 @@
   <!-- Chatbot CSS -->
   <link href="assets/css/chatbot.css" rel="stylesheet">
 
+  <!-- Calendly link widget begin -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <!-- Calendly link widget end -->
+
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -175,9 +180,7 @@
         <i class="bi bi-moon"></i>
       </button>
 
-      <a class="btn-getstarted"
-        href="mailto:ciphcreativeagency@gmail.com?subject=Get Started Inquiry&body=Hi, I'd like to get started with your services."
-        target="_blank">
+      <a class="btn-getstarted" href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/ciphcreativeagency/30min'});return false;">
         Get Started</a>
 
     </div>

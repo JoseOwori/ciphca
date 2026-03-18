@@ -602,7 +602,11 @@ class CiphChatbot {
         this.closeConversation();
       }, 2000);
     } else if (value === 'schedule') {
-      window.open('https://calendly.com/ciphcreativeagency/30min', '_blank');
+      if (typeof Calendly !== 'undefined') {
+        Calendly.initPopupWidget({ url: 'https://calendly.com/ciphcreativeagency/30min' });
+      } else {
+        window.open('https://calendly.com/ciphcreativeagency/30min', '_blank');
+      }
       this.addBotMessage(
         "Opening our calendar... 📅\n\n" +
         "Pick a time that works best for you!"
