@@ -60,6 +60,8 @@
   <link href="assets/css/main.css" rel="stylesheet">
   <!-- Chatbot CSS -->
   <link href="assets/css/chatbot.css" rel="stylesheet">
+  <!-- Custom Calendly & Form CSS -->
+  <link href="assets/css/calendly-custom.css" rel="stylesheet">
 
   <!-- Calendly link widget begin -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -180,7 +182,7 @@
         <i class="bi bi-moon"></i>
       </button>
 
-      <a class="btn-getstarted" href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/ciphcreativeagency/30min'});return false;">
+      <a class="btn-getstarted" href="#" data-bs-toggle="modal" data-bs-target="#calendlyModal">
         Get Started</a>
 
     </div>
@@ -681,7 +683,7 @@
             </div>
 
             <div class="cta-buttons d-flex flex-wrap gap-3">
-              <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#serviceRequestModal" class="btn btn-primary">Get a Quote</a>
               <a href="about.html" class="btn btn-outline">About Us</a>
             </div>
           </div>
@@ -1019,6 +1021,85 @@
 
   <!-- Main JS File -->
   <script defer src="assets/js/main.js"></script>
+
+  <!-- Service Request Modal -->
+  <div class="modal fade" id="serviceRequestModal" tabindex="-1" aria-labelledby="serviceRequestModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fs-4 fw-bold" id="serviceRequestModalLabel">Let's <span style="color: #71bf5c;">Start</span> Your Project</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="serviceRequestForm" action="forms/quote-request.php" method="post" class="php-email-form">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="req-name" class="form-label">Full Name</label>
+                <input type="text" name="name" class="form-control" id="req-name" placeholder="John Doe" required>
+              </div>
+              <div class="col-md-6">
+                <label for="req-email" class="form-label">Email Address</label>
+                <input type="email" name="email" class="form-control" id="req-email" placeholder="john@example.com" required>
+              </div>
+              <div class="col-12">
+                <label for="req-service" class="form-label">What service are you looking for?</label>
+                <select class="form-select" name="service" id="req-service" required>
+                  <option value="" selected disabled>Select a service</option>
+                  <option value="Web Design">Web Design & UX/UI</option>
+                  <option value="Web Development">Web Development (Full-stack)</option>
+                  <option value="E-commerce">E-commerce Solutions</option>
+                  <option value="Digital Marketing">Digital Marketing & SEO</option>
+                  <option value="Graphic Design">Graphic Design & Branding</option>
+                  <option value="Product Management">Product Management</option>
+                  <option value="Consultation">General Strategy Consultation</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label for="req-details" class="form-label">Project Details</label>
+                <textarea class="form-control" name="message" id="req-details" rows="5" placeholder="Tell us about your project, goals, and any specific requirements you have in mind..." required></textarea>
+              </div>
+              <div class="col-12">
+                <div class="hosting-inquiry">
+                  <div class="form-check form-switch d-flex align-items-center gap-3">
+                    <input class="form-check-input" type="checkbox" role="switch" id="hostingSwitch" name="hosting_management" value="Yes">
+                    <label class="form-check-label fw-bold mb-0" for="hostingSwitch">
+                      Would you like C|C|A to host and manage the website?
+                    </label>
+                  </div>
+                  <p class="small text-muted mt-2 mb-0 ms-5">We provide premium, secure hosting and 24/7 maintenance support.</p>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="my-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your request has been sent successfully. We'll get back to you shortly!</div>
+                </div>
+                <button type="submit" class="btn-submit-request">Send Request</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Refined Calendly Modal -->
+  <div class="modal fade" id="calendlyModal" tabindex="-1" aria-labelledby="calendlyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="calendlyModalLabel"><i class="bi bi-calendar-event me-2"></i>Schedule a <span style="color: #71bf5c;">Consultation</span></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <!-- Calendly inline widget begin -->
+          <div class="calendly-inline-widget" data-url="https://calendly.com/ciphcreativeagency/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=71bf5c"></div>
+          <!-- Calendly inline widget end -->
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Chatbot -->
   <script defer src="assets/js/chatbot.js"></script>

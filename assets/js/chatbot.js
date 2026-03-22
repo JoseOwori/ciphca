@@ -602,8 +602,10 @@ class CiphChatbot {
         this.closeConversation();
       }, 2000);
     } else if (value === 'schedule') {
-      if (typeof Calendly !== 'undefined') {
-        Calendly.initPopupWidget({ url: 'https://calendly.com/ciphcreativeagency/30min' });
+      const modalEl = document.getElementById('calendlyModal');
+      if (modalEl && typeof bootstrap !== 'undefined') {
+        const modal = new bootstrap.Modal(modalEl);
+        modal.show();
       } else {
         window.open('https://calendly.com/ciphcreativeagency/30min', '_blank');
       }
