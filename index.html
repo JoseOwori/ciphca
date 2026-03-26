@@ -3,6 +3,8 @@
 
 <head>
   <meta charset="utf-8">
+  <!-- Preload LCP image FIRST - before anything else to eliminate resource delay -->
+  <link rel="preload" as="image" href="assets/img/abstract/abstract-1.webp" fetchpriority="high" type="image/webp">
   <meta name="msvalidate.01" content="4711F94E6678A73B6E301945457862E9" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,8 +41,7 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
-  <!-- Preload Critical Assets -->
-  <link rel="preload" as="image" href="assets/img/abstract/abstract-1.webp" fetchpriority="high">
+  <!-- Preload Critical Assets (primary declaration now at top of head) -->
 
   <!-- Fonts: Inter + Geist Mono for editorial accents -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -50,18 +51,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
+  <!-- Bootstrap & Icons are critical (used above the fold) -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <!-- Non-critical CSS loaded asynchronously to avoid render-blocking LCP -->
+  <link rel="preload" href="assets/vendor/aos/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="assets/vendor/aos/aos.css" rel="stylesheet"></noscript>
+  <link rel="preload" href="assets/vendor/swiper/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"></noscript>
+  <link rel="preload" href="assets/vendor/glightbox/css/glightbox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"></noscript>
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/main.min.css" rel="stylesheet">
   <!-- Chatbot CSS -->
-  <link href="assets/css/chatbot.css" rel="stylesheet">
+  <link href="assets/css/chatbot.min.css" rel="stylesheet">
   <!-- Custom Calendly & Form CSS -->
-  <link href="assets/css/calendly-custom.css" rel="stylesheet">
+  <link href="assets/css/calendly-custom.min.css" rel="stylesheet">
 
   <!-- Calendly link widget begin -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -1020,7 +1026,7 @@
   <script defer src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
   <!-- Main JS File -->
-  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.min.js"></script>
 
   <!-- Service Request Modal -->
   <div class="modal fade" id="serviceRequestModal" tabindex="-1" aria-labelledby="serviceRequestModalLabel" aria-hidden="true">
@@ -1102,7 +1108,7 @@
   </div>
 
   <!-- Chatbot -->
-  <script defer src="assets/js/chatbot.js"></script>
+  <script defer src="assets/js/chatbot.min.js"></script>
 
 </body>
 
