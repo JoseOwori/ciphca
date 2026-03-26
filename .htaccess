@@ -1,0 +1,125 @@
+# ============================================================
+# Ciph Creative Agency - Apache Performance Configuration
+# ============================================================
+
+# -------------------------------------------------------
+# 1. ENABLE BROTLI COMPRESSION (higher compression ratio)
+# -------------------------------------------------------
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css
+    AddOutputFilterByType BROTLI_COMPRESS application/javascript application/json
+    AddOutputFilterByType BROTLI_COMPRESS application/x-font-ttf application/font-woff application/font-woff2
+    AddOutputFilterByType BROTLI_COMPRESS image/svg+xml
+</IfModule>
+
+# -------------------------------------------------------
+# 2. ENABLE GZIP COMPRESSION (fallback for all servers)
+# -------------------------------------------------------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+    AddOutputFilterByType DEFLATE application/json application/xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE application/x-font-ttf application/font-woff application/font-woff2
+    # Remove browser bugs (for very old browsers)
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+    Header append Vary User-Agent
+</IfModule>
+
+# -------------------------------------------------------
+# 3. BROWSER CACHING (Cache-Control headers)
+# -------------------------------------------------------
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # HTML - short cache (1 day) so content updates propagate
+    ExpiresByType text/html                         "access plus 1 day"
+
+    # CSS & JavaScript - long cache (1 year, use versioned filenames to bust)
+    ExpiresByType text/css                          "access plus 1 year"
+    ExpiresByType application/javascript            "access plus 1 year"
+    ExpiresByType application/x-javascript         "access plus 1 year"
+
+    # Images - long cache (1 year)
+    ExpiresByType image/webp                        "access plus 1 year"
+    ExpiresByType image/png                         "access plus 1 year"
+    ExpiresByType image/jpeg                        "access plus 1 year"
+    ExpiresByType image/gif                         "access plus 1 year"
+    ExpiresByType image/svg+xml                     "access plus 1 year"
+    ExpiresByType image/x-icon                      "access plus 1 year"
+
+    # Fonts - long cache (1 year)
+    ExpiresByType font/woff                         "access plus 1 year"
+    ExpiresByType font/woff2                        "access plus 1 year"
+    ExpiresByType application/font-woff             "access plus 1 year"
+    ExpiresByType application/font-woff2            "access plus 1 year"
+    ExpiresByType application/x-font-ttf            "access plus 1 year"
+
+    # Favicon & manifest
+    ExpiresByType image/vnd.microsoft.icon          "access plus 1 week"
+    ExpiresByType application/manifest+json         "access plus 1 week"
+</IfModule>
+
+# -------------------------------------------------------
+# 4. CACHE-CONTROL HEADERS (more granular control)
+# -------------------------------------------------------
+<IfModule mod_headers.c>
+    # HTML - revalidate each day
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "max-age=86400, must-revalidate"
+    </FilesMatch>
+
+    # CSS, JS - cache for 1 year (immutable = skip revalidation)
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+
+    # Images - cache 1 year
+    <FilesMatch "\.(webp|png|jpg|jpeg|gif|ico|svg)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+
+    # Fonts - cache 1 year
+    <FilesMatch "\.(woff|woff2|ttf|eot)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+
+    # Remove X-Powered-By header (security)
+    Header unset X-Powered-By
+
+    # Security headers
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# -------------------------------------------------------
+# 5. KEEP-ALIVE (reuse TCP connections)
+# -------------------------------------------------------
+<IfModule mod_headers.c>
+    Header set Connection keep-alive
+</IfModule>
+
+# -------------------------------------------------------
+# 6. DISABLE ETags (avoid duplicate validation overhead)
+# -------------------------------------------------------
+FileETag None
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+
+# -------------------------------------------------------
+# 7. FORCE HTTPS (uncomment when SSL is active)
+# -------------------------------------------------------
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTPS} off
+#     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+# -------------------------------------------------------
+# 8. CUSTOM 404 PAGE (optional)
+# -------------------------------------------------------
+# ErrorDocument 404 /index.html
