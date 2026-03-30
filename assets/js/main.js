@@ -371,4 +371,25 @@
     });
   });
 
+  /**
+   * Lazy load Calendly widget
+   */
+  let calendlyLoaded = false;
+  document.querySelectorAll('[data-bs-target="#calendlyModal"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!calendlyLoaded) {
+        calendlyLoaded = true;
+        const css = document.createElement('link');
+        css.href = 'https://assets.calendly.com/assets/external/widget.css';
+        css.rel = 'stylesheet';
+        document.head.appendChild(css);
+
+        const script = document.createElement('script');
+        script.src = 'https://assets.calendly.com/assets/external/widget.js';
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    });
+  });
+
 })();

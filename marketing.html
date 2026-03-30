@@ -41,10 +41,8 @@
   <!-- Non-critical CSS loaded async to improve LCP -->
   <link rel="preload" href="assets/vendor/aos/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="assets/vendor/aos/aos.css" rel="stylesheet"></noscript>
-  <link rel="preload" href="assets/vendor/swiper/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"></noscript>
-  <link rel="preload" href="assets/vendor/glightbox/css/glightbox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"></noscript>
+  <noscript></noscript>
+  <noscript></noscript>
 
   <!-- Main CSS File -->
   <link href="assets/css/main.min.css" rel="stylesheet">
@@ -53,11 +51,9 @@
   <!-- Custom Calendly & Form CSS -->
   <link href="assets/css/calendly-custom.min.css" rel="stylesheet">
 
-
-  <!-- Calendly link widget begin -->
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <!-- Calendly link widget end -->
+  
+  
+  
 </head>
 
 <body class="inner-page">
@@ -238,7 +234,7 @@
 
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright &copy;
-          <script>document.write(new Date().getFullYear());</script> All rights reserved </i> by <a
+          <span class="dynamic-year"></span> All rights reserved </i> by <a
             href="https://ciphca.com">Ciph Creative Agency</a>
       </p>
       <div class="credits">
@@ -258,10 +254,10 @@
   <script defer src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script defer src="assets/vendor/php-email-form/validate.js"></script>
   <script defer src="assets/vendor/aos/aos.js"></script>
-  <script defer src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script defer src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script defer src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script defer src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  
+  
+  
+  
 
   <!-- Main JS File -->
   <script defer src="assets/js/main.min.js"></script>
@@ -357,9 +353,9 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-0">
-          <!-- Calendly inline widget begin -->
+          
           <div class="calendly-inline-widget" data-url="https://calendly.com/ciphcreativeagency/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=71bf5c"></div>
-          <!-- Calendly inline widget end -->
+          
         </div>
       </div>
     </div>
