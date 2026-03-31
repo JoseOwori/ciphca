@@ -11,9 +11,10 @@
 # Help: https://bootstrapmade.com/color-system/
 --------------------------------------------------------------*/
 /* Fonts */
+
 :root {
   --default-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-  --heading-font: "Inter", sans-serif;
+  --heading-font: "Outfit", sans-serif;
   --nav-font: "Inter", sans-serif;
   --mono-font: "Geist Mono", "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
   --base-font-size: 16px;
@@ -191,6 +192,14 @@ h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
   letter-spacing: -0.02em;
+}
+
+strong,
+b,
+th,
+.fw-bold,
+.fw-semibold {
+  font-family: var(--heading-font);
 }
 
 /* Accessibility Utilities */
