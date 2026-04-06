@@ -57,10 +57,11 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.min.css" rel="stylesheet">
-  <!-- Chatbot CSS -->
-  <link href="assets/css/chatbot.min.css" rel="stylesheet">
-  <!-- Custom Calendly & Form CSS -->
-  <link href="assets/css/calendly-custom.min.css" rel="stylesheet">
+  <!-- Non-critical CSS: deferred so it doesn't block first paint -->
+  <link rel="preload" href="assets/css/chatbot.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="assets/css/chatbot.min.css" rel="stylesheet"></noscript>
+  <link rel="preload" href="assets/css/calendly-custom.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="assets/css/calendly-custom.min.css" rel="stylesheet"></noscript>
 
   
   
@@ -1058,7 +1059,7 @@
     </div>
   </div>
 
-  <!-- Refined Calendly Modal -->
+  <!-- Refined Calendly Modal (Calendly loads lazily on modal open) -->
   <div class="modal fade" id="calendlyModal" tabindex="-1" aria-labelledby="calendlyModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
@@ -1067,13 +1068,39 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-0">
-          
-          <div class="calendly-inline-widget" data-url="https://calendly.com/ciphcreativeagency/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=71bf5c"></div>
-          
+          <!-- Calendly widget placeholder - loaded lazily when modal opens -->
+          <div id="calendly-widget-container" style="min-height:630px;"></div>
         </div>
       </div>
     </div>
   </div>
+  <script>
+  // Lazy-load Calendly only when the modal is opened for the first time
+  (function() {
+    var calendlyLoaded = false;
+    var modalEl = document.getElementById('calendlyModal');
+    if (modalEl) {
+      modalEl.addEventListener('show.bs.modal', function() {
+        if (calendlyLoaded) return;
+        calendlyLoaded = true;
+        var container = document.getElementById('calendly-widget-container');
+        // Inject the Calendly script
+        var script = document.createElement('script');
+        script.src = 'https://assets.calendly.com/assets/external/widget.js';
+        script.async = true;
+        script.onload = function() {
+          Calendly.initInlineWidget({
+            url: 'https://calendly.com/ciphcreativeagency/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=71bf5c',
+            parentElement: container,
+            prefill: {},
+            utm: {}
+          });
+        };
+        document.body.appendChild(script);
+      });
+    }
+  })();
+  </script>
 
   <!-- Chatbot -->
   <script defer src="assets/js/chatbot.min.js"></script>
