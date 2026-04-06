@@ -33,19 +33,15 @@
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- DNS Prefetch for third-party domains -->
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-  <link rel="dns-prefetch" href="https://www.clarity.ms">
-  <link rel="dns-prefetch" href="https://consent.cookiebot.com">
-  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+  <!-- DNS Prefetch & Resource Hints -->
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-
-  <!-- Preload Critical Assets (primary declaration now at top of head) -->
-
-  <!-- Fonts: Inter + Geist Mono for editorial accents -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="https://c.bing.com">
+  <link rel="dns-prefetch" href="https://consent.cookiebot.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -667,7 +663,7 @@
           </div>
 
           <div class="content-right position-relative" data-aos="fade-left" data-aos-delay="300">
-            <img src="assets/img/misc/misc-1.webp" alt="Digital Platform" class="img-fluid rounded-4" loading="lazy" width="800" height="600">
+            <img loading="lazy" decoding="async" src="assets/img/misc/misc-1.webp" alt="Digital Platform" class="img-fluid rounded-4" loading="lazy" width="800" height="600">
             <div class="floating-card">
               <div class="card-icon">
                 <i class="bi bi-graph-up-arrow"></i>
